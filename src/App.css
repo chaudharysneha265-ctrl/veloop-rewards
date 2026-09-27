@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  background: #161827;
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  width: 100%;
+}
+
+.reward-page {
+  width: 100%;
+  background: #161827;
+  padding: 24px;
+  min-height: 100vh;
+}
+
+.banner-title {
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.banner-text {
+  color: #c7c9d6;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.reward-banner {
+  width: 100%;
+  min-height: 420px;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  padding: 45px;
+  display: flex;
+  align-items: center;
+}
+
+.banner-visual {
+  font-size: 130px;
+}
+
+.reward-button {
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.reward-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .reward-page {
+    padding: 14px;
+  }
+
+  .reward-banner {
+    padding: 30px 22px;
+    min-height: 400px;
+  }
+
+  .banner-title {
+    font-size: 32px;
+    color: white !important;
+  }
+
+  .banner-text {
+    color: white !important;
+  }
+
+  .banner-visual {
+    font-size: 90px;
+  }
+}
