@@ -1,114 +1,214 @@
+import { useState } from "react";
 import {
   FaGift,
   FaExchangeAlt,
   FaCoins,
   FaShieldAlt,
   FaWallet,
+  FaUsers,
+  FaArrowRight,
+  FaCheckCircle,
+  FaRandom,
+  FaTrophy,
+  FaTimes,
 } from "react-icons/fa";
 
-function RewardBanner({ icon, title, text, button, accent }) {
+function RewardBanner({
+  icon,
+  title,
+  text,
+  button,
+  accent,
+  visual,
+  visualLabel,
+  theme = "default",
+}) {
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleClick = () => {
+    setShowMessage(true);
+  };
+
   return (
-    <div
-      className="reward-banner"
-      style={{
-        minHeight: "420px",
-        background: "linear-gradient(135deg, #202238, #161827)",
-        color: "white",
-        borderRadius: "24px",
-        marginBottom: "24px",
-        overflow: "hidden",
-      }}
-    >
-      <div className="row h-100 align-items-center px-4 px-lg-5">
-        <div className="col-lg-7">
+    <section className={`reward-banner ${theme}`} tabIndex="0">
+      <div className="banner-content">
+
+        <div className="banner-info">
           <div
-            style={{
-              fontSize: "55px",
-              color: accent,
-              marginBottom: "20px",
-            }}
+            className="banner-icon"
+            style={{ color: accent }}
+            aria-hidden="true"
           >
             {icon}
           </div>
 
-          <h1 className="banner-title mb-3"
-          style={{color: "white"}}>
-            {title}
-            </h1>
+          <p className="banner-label">VELOOP REWARDS</p>
 
-          <p
-            className="banner-text mb-4"
-            style={{
-              color: "#b8bbca",
-              fontSize: "18px",
-              maxWidth: "600px",
-            }}
-          >
-            {text}
-          </p>
+          <h1 className="banner-title">{title}</h1>
+
+          <p className="banner-text">{text}</p>
 
           <button
-          onClick={() => alert(`${button} feature coming soon!`)}
             className="reward-button"
-            style={{
-              background: accent,
-              color: "#161827",
-              borderRadius: "12px",
-              border: "none",
-            }}
+            style={{ "--accent": accent }}
+            onClick={handleClick}
+            aria-label={button}
           >
-            {button} →
+            <span>{button}</span>
+            <FaArrowRight aria-hidden="true" />
           </button>
+
+          {showMessage && (
+            <div
+              className="cta-message"
+              style={{ "--accent": accent }}
+              role="status"
+            >
+              <div className="cta-message-content">
+
+                <FaCheckCircle className="cta-success-icon" />
+
+                <div>
+                  <strong>{title}</strong>
+
+                  <p>
+                    {title === "Swap Center"
+                      ? "Swap Center interaction is ready for the next conversion step."
+                      : title === "Exchange Center"
+                      ? "Exchange Center interaction is ready for the next redemption step."
+                      : "This section is ready for the next interaction step."}
+                  </p>
+                </div>
+
+                <button
+                  className="cta-close"
+                  onClick={() => setShowMessage(false)}
+                  aria-label="Close message"
+                >
+                  <FaTimes />
+                </button>
+
+              </div>
+            </div>
+          )}
         </div>
 
-        <div className="col-lg-5 text-center mt-4 mt-lg-0">
+        <div className="banner-visual-area">
+
           <div
-            style={{
-              fontSize: "130px",
-              color: accent,
-              opacity: 0.9,
-            }}
-          >
-            {icon}
+            className="visual-glow"
+            style={{ "--accent": accent }}
+            aria-hidden="true"
+          />
+
+          <div className="visual-card">
+
+            <div
+              className="visual-main"
+              style={{ color: accent }}
+              aria-hidden="true"
+            >
+              {visual}
+            </div>
+
+            <div className="visual-badge">
+              <FaCheckCircle />
+              <span>{visualLabel}</span>
+            </div>
+
           </div>
+
+          <div
+            className="floating-dot dot-one"
+            style={{ background: accent }}
+            aria-hidden="true"
+          />
+
+          <div
+            className="floating-dot dot-two"
+            style={{ background: accent }}
+            aria-hidden="true"
+          />
+
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
 function App() {
   return (
-    <div
-      style={{
-        background: "#161827",
-        minHeight: "100vh",
-        padding: "30px 15px",
-      }}
-    >
+    <main className="reward-page">
+
+      {/* =========================
+          REFER & EARN
+      ========================= */}
+
       <RewardBanner
         icon={<FaGift />}
         title="Refer & Earn"
-        text="Invite your friends and earn VEs when they join and complete eligible activities."
-        button="Refer and Earn"
+        text="Invite your friends to VELOOP Rewards and unlock rewards when they complete eligible activities."
+        button="Refer & Earn"
         accent="#f4c95d"
+        visual={
+          <div className="visual-composition">
+            <FaGift className="main-visual-icon" />
+            <FaUsers className="secondary-visual-icon" />
+          </div>
+        }
+        visualLabel="Share & earn"
+        theme="refer-banner"
       />
+
+      {/* =========================
+          SWAP CENTER
+      ========================= */}
 
       <RewardBanner
         icon={<FaExchangeAlt />}
         title="Swap Center"
-        text="Swap your eligible VEs between supported options and manage your rewards easily."
-        button="Swap"
+        text="Convert eligible reward balances between supported options and manage your rewards efficiently."
+        button="Open Swap Center"
         accent="#8ab4f8"
+        visual={
+          <div className="visual-composition swap-visual">
+
+            <FaRandom className="main-visual-icon" />
+
+            <FaCoins className="secondary-visual-icon" />
+
+          </div>
+        }
+        visualLabel="Convert rewards"
+        theme="swap-banner"
       />
+
+      {/* =========================
+          BONUS VEs
+      ========================= */}
 
       <RewardBanner
         icon={<FaCoins />}
         title="Get Extra VEs"
-        text="Complete eligible activities and discover available opportunities to earn additional VEs."
+        text="Complete eligible activities and explore available opportunities to earn additional VEs."
         button="Explore Bonus"
         accent="#e7b85c"
+        visual={
+          <div className="visual-composition">
+
+            <FaCoins className="main-visual-icon" />
+
+            <FaTrophy className="secondary-visual-icon" />
+
+          </div>
+        }
+        visualLabel="Bonus opportunities"
+        theme="bonus-banner"
       />
+
+      {/* =========================
+          CAPTCHA TASKS
+      ========================= */}
 
       <RewardBanner
         icon={<FaShieldAlt />}
@@ -116,7 +216,22 @@ function App() {
         text="Complete available captcha tasks accurately and earn rewards for eligible submissions."
         button="Start Task"
         accent="#9da7ff"
+        visual={
+          <div className="visual-composition captcha-visual">
+
+            <FaShieldAlt className="main-visual-icon" />
+
+            <FaCheckCircle className="secondary-visual-icon" />
+
+          </div>
+        }
+        visualLabel="Verify & complete"
+        theme="captcha-banner"
       />
+
+      {/* =========================
+          EXCHANGE CENTER
+      ========================= */}
 
       <RewardBanner
         icon={<FaWallet />}
@@ -124,8 +239,20 @@ function App() {
         text="Explore available redemption options and exchange eligible VEs for supported rewards."
         button="Open Exchange Center"
         accent="#d8c6ff"
+        visual={
+          <div className="visual-composition exchange-visual">
+
+            <FaWallet className="main-visual-icon" />
+
+            <FaCoins className="secondary-visual-icon" />
+
+          </div>
+        }
+        visualLabel="Redeem rewards"
+        theme="exchange-banner"
       />
-    </div>
+
+    </main>
   );
 }
 
