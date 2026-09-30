@@ -1,16 +1,69 @@
-# React + Vite
+# VELOOP Rewards
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive reward-focused web interface built with React and Vite for the VELOOP Rewards project.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://veloop-rewards-vert.vercel.app/
 
-## React Compiler
+## GitHub Repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://github.com/chaudharysneha265-ctrl/veloop-rewards
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Responsive design for desktop, tablet, and mobile screens
+- Refer & Earn reward section
+- Swap Center interaction
+- Get Extra VEs bonus interaction
+- Captcha Tasks interaction
+- Exchange Center interaction
+- Interactive CTA buttons
+- Bonus progress and claim interaction
+- Success and status messages
+- Animated reward visuals
+- Hover and focus states
+- Accessible button interactions
+- Reduced-motion support
+
+## Technologies Used
+
+- React
+- Vite
+- JavaScript
+- CSS
+- React Icons
+
+## Project Sections
+
+### Refer & Earn
+Allows users to explore the referral reward interaction.
+
+### Swap Center
+Provides an interface for the next reward conversion step.
+
+### Get Extra VEs
+Includes a bonus progress indicator and a claim bonus interaction.
+
+### Captcha Tasks
+Provides a task-start interaction for eligible captcha activities.
+
+### Exchange Center
+Provides an interaction for exploring reward redemption options.
+
+## Responsive Design
+
+The project is designed to work across:
+
+- Desktop
+- Tablet
+- Mobile
+
+The layout automatically adapts to smaller screen sizes using responsive CSS media queries.
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/chaudharysneha265-ctrl/veloop-rewards.git
