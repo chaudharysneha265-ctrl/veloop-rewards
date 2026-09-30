@@ -1,0 +1,840 @@
+* {
+  box-sizing: border-box;
+}
+
+:global(html) {
+  scroll-behavior: smooth;
+}
+
+:global(body) {
+  margin: 0;
+  background: #161827;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+:global(button) {
+  font-family: inherit;
+}
+
+:global(#root) {
+  width: 100%;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.rewardPage {
+  width: 100%;
+  min-height: 100vh;
+  background: #161827;
+  padding: 24px;
+}
+
+/* =========================
+   BANNER
+========================= */
+
+.rewardBanner {
+  --accent: #ffffff;
+
+  width: 100%;
+  min-height: 420px;
+  margin-bottom: 24px;
+  padding: 45px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #202238, #161827);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.rewardBanner:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.rewardBanner:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* =========================
+   BANNER THEMES
+========================= */
+
+.referBanner {
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(244, 201, 93, 0.1),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #202238, #161827);
+}
+
+.swapBanner {
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(138, 180, 248, 0.1),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #202238, #161827);
+}
+
+.bonusBanner {
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(231, 184, 92, 0.1),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #202238, #161827);
+}
+
+.captchaBanner {
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(157, 167, 255, 0.1),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #202238, #161827);
+}
+
+.exchangeBanner {
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(216, 198, 255, 0.1),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #202238, #161827);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.bannerContent {
+  width: 100%;
+  min-height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.bannerInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.bannerIcon {
+  font-size: 42px;
+  margin-bottom: 14px;
+}
+
+.bannerLabel {
+  margin: 0 0 10px;
+  color: #8f93a8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.bannerTitle {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.bannerText {
+  max-width: 600px;
+  margin: 0 0 24px;
+  color: #c7c9d6;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* =========================
+   CTA BUTTON
+========================= */
+
+.rewardButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #161827;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.rewardButton:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.rewardButton:active {
+  transform: translateY(0);
+}
+
+.rewardButton:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* =========================
+   CTA MESSAGE
+========================= */
+
+.ctaMessage {
+  max-width: 600px;
+  margin-top: 18px;
+  padding: 15px 16px;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.055);
+  animation: messageIn 0.3s ease;
+}
+
+.ctaMessageContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ctaSuccessIcon {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.ctaMessage strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.ctaMessage p {
+  margin: 0;
+  color: #bfc2d1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ctaClose {
+  margin-left: auto;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: #9296a9;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.ctaClose:hover {
+  color: #ffffff;
+}
+
+/* =========================
+   BONUS
+========================= */
+
+.bonusProgress {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.bonusProgressTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  color: #aeb2c3;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progressFill {
+  width: 70%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  animation: progressGrow 0.8s ease;
+}
+
+.progressFill.completed {
+  width: 100%;
+}
+
+.claimBonusButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 15px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #161827;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.claimBonusButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.claimBonusButton:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
+/* =========================
+   VISUAL AREA
+========================= */
+
+.bannerVisualArea {
+  flex: 0 0 38%;
+  min-height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualCard {
+  width: 280px;
+  height: 250px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: visualFloat 4s ease-in-out infinite;
+}
+
+.visualMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+}
+
+.visualComposition {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  min-height: 130px;
+}
+
+.mainVisualIcon {
+  font-size: 82px;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.secondaryVisualIcon {
+  position: absolute;
+  right: -5px;
+  bottom: 2px;
+  font-size: 38px;
+  opacity: 0.9;
+  animation: secondaryFloat 2.5s ease-in-out infinite;
+}
+
+.visualBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #d6d8e3;
+  font-size: 12px;
+}
+
+.visualBadge svg {
+  font-size: 12px;
+}
+
+.visualGlow {
+  width: 230px;
+  height: 230px;
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.07;
+  filter: blur(45px);
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.floatingDot {
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.dotOne {
+  top: 20%;
+  right: 12%;
+  animation: dotFloatOne 3s ease-in-out infinite;
+}
+
+.dotTwo {
+  bottom: 18%;
+  left: 12%;
+  animation: dotFloatTwo 3.5s ease-in-out infinite;
+}
+
+/* =========================
+   SWAP PANEL
+========================= */
+
+.swapPanel {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.swapField label {
+  display: block;
+  margin-bottom: 6px;
+  color: #aeb2c3;
+  font-size: 12px;
+}
+
+.swapField input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.swapField input:focus {
+  border-color: var(--accent);
+}
+
+.swapOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 12px 0;
+  color: #aeb2c3;
+  font-size: 12px;
+}
+
+.swapOption {
+  flex: 1;
+  padding: 9px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.swapOption span {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 10px;
+  color: #8f93a8;
+}
+
+.swapOption strong {
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.swapSuccess {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 0;
+  color: #bfc2d1;
+  font-size: 12px;
+}
+
+/* =========================
+   EXCHANGE PANEL
+========================= */
+
+.exchangePanel {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.exchangeOptions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.exchangeOption {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #c7c9d6;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.exchangeOption:hover,
+.exchangeOption.selected {
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.exchangeOption.selected {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.exchangeSuccess {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 0;
+  color: #bfc2d1;
+  font-size: 12px;
+}
+
+/* =========================
+   FOCUS
+========================= */
+
+.ctaClose:focus-visible,
+.exchangeOption:focus-visible,
+.claimBonusButton:focus-visible,
+.swapField input:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes visualFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+}
+
+@keyframes secondaryFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.06;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.1;
+  }
+}
+
+@keyframes dotFloatOne {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(7px, -10px);
+  }
+}
+
+@keyframes dotFloatTwo {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-8px, 7px);
+  }
+}
+
+@keyframes progressGrow {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 70%;
+  }
+}
+
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px) {
+  .rewardPage {
+    padding: 18px;
+  }
+
+  .rewardBanner {
+    min-height: 400px;
+    padding: 35px;
+  }
+
+  .bannerContent {
+    gap: 25px;
+  }
+
+  .bannerTitle {
+    font-size: 36px;
+  }
+
+  .bannerText {
+    font-size: 16px;
+  }
+
+  .bannerVisualArea {
+    flex-basis: 36%;
+  }
+
+  .visualCard {
+    width: 230px;
+    height: 230px;
+  }
+
+  .mainVisualIcon {
+    font-size: 68px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .rewardPage {
+    padding: 12px;
+  }
+
+  .rewardBanner {
+    min-height: 0;
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .bannerContent {
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 25px;
+  }
+
+  .bannerInfo {
+    width: 100%;
+  }
+
+  .bannerIcon {
+    font-size: 34px;
+    margin-bottom: 10px;
+  }
+
+  .bannerLabel {
+    font-size: 10px;
+  }
+
+  .bannerTitle {
+    font-size: 31px;
+  }
+
+  .bannerText {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .rewardButton {
+    width: 100%;
+  }
+
+  .ctaMessage {
+    max-width: 100%;
+  }
+
+  .bannerVisualArea {
+    width: 100%;
+    min-height: 220px;
+    flex: none;
+  }
+
+  .visualCard {
+    width: 220px;
+    height: 200px;
+  }
+
+  .visualMain {
+    font-size: 60px;
+  }
+
+  .mainVisualIcon {
+    font-size: 62px;
+  }
+
+  .secondaryVisualIcon {
+    font-size: 30px;
+  }
+
+  .visualBadge {
+    margin-top: 10px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .rewardPage {
+    padding: 10px;
+  }
+
+  .rewardBanner {
+    padding: 24px 16px;
+  }
+
+  .bannerTitle {
+    font-size: 28px;
+  }
+
+  .bannerText {
+    font-size: 14px;
+  }
+
+  .bannerVisualArea {
+    min-height: 195px;
+  }
+
+  .visualCard {
+    width: 195px;
+    height: 180px;
+  }
+
+  .mainVisualIcon {
+    font-size: 55px;
+  }
+
+  .secondaryVisualIcon {
+    font-size: 26px;
+  }
+}
+
+/* =========================
+   REDUCE MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html) {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
