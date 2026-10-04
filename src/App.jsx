@@ -92,7 +92,7 @@ function RewardBanner({
 
           <p className={styles.bannerLabel}>VELOOP REWARDS</p>
 
-          <h1 className={styles.bannerTitle}>{title}</h1>
+          <h2 className={styles.bannerTitle}>{title}</h2>
 
           <p className={styles.bannerText}>{text}</p>
 
@@ -102,6 +102,7 @@ function RewardBanner({
           </div>
 
           <button
+            type="button"
             className={styles.rewardButton}
             style={{ "--accent": accent }}
             onClick={handleClick}
@@ -131,6 +132,7 @@ function RewardBanner({
                       </p>
 
                       <button
+                        type="button"
                         className={styles.claimBonusButton}
                         style={{ "--accent": accent }}
                         onClick={handleReferral}
@@ -184,6 +186,7 @@ function RewardBanner({
                         </div>
 
                         <button
+                          type="button"
                           className={styles.claimBonusButton}
                           style={{ "--accent": accent }}
                           onClick={handleSwap}
@@ -325,6 +328,7 @@ function RewardBanner({
                 </div>
 
                 <button
+                  type="button"
                   className={styles.ctaClose}
                   onClick={() => setShowMessage(false)}
                   aria-label="Close message"
