@@ -24,6 +24,7 @@ function RewardBanner({
   accent,
   visual,
   visualLabel,
+  valueProp,
   theme = "default",
 }) {
   const [showMessage, setShowMessage] = useState(false);
@@ -78,7 +79,6 @@ function RewardBanner({
   return (
     <section
       className={`${styles.rewardBanner} ${styles[theme]}`}
-      tabIndex="0"
     >
       <div className={styles.bannerContent}>
         <div className={styles.bannerInfo}>
@@ -95,6 +95,11 @@ function RewardBanner({
           <h1 className={styles.bannerTitle}>{title}</h1>
 
           <p className={styles.bannerText}>{text}</p>
+
+          <div className={styles.rewardHighlight}>
+            <span>Value</span>
+            <strong>{valueProp}</strong>
+          </div>
 
           <button
             className={styles.rewardButton}
@@ -146,8 +151,8 @@ function RewardBanner({
                   {title === "Swap Center" && (
                     <>
                       <p>
-                        Enter the amount of VEs you want to convert between
-                        supported reward options.
+                        Enter the amount of VEs you want to swap into a supported
+                        reward or voucher balance.
                       </p>
 
                       <div className={styles.swapPanel}>
@@ -174,7 +179,7 @@ function RewardBanner({
 
                           <div className={styles.swapOption}>
                             <span>To</span>
-                            <strong>Supported Reward</strong>
+                            <strong>Voucher / Reward</strong>
                           </div>
                         </div>
 
@@ -267,8 +272,7 @@ function RewardBanner({
                   {title === "Exchange Center" && (
                     <>
                       <p>
-                        Select an available redemption option for your
-                        eligible VEs.
+                        Select a supported redemption option for your earned VEs.
                       </p>
 
                       <div className={styles.exchangePanel}>
@@ -380,6 +384,7 @@ function App() {
         text="Invite your friends to VELOOP Rewards and unlock rewards when they complete eligible activities."
         button="Refer & Earn"
         accent="#f4c95d"
+        valueProp="Earn from eligible referral milestones"
         visual={
           <div className={styles.visualComposition}>
             <FaGift className={styles.mainVisualIcon} />
@@ -404,6 +409,7 @@ function App() {
         }
         visualLabel="Convert rewards"
         theme="swapBanner"
+        valueProp="Swap eligible VEs into supported rewards or vouchers"
       />
 
       <RewardBanner
@@ -420,6 +426,7 @@ function App() {
         }
         visualLabel="Bonus opportunities"
         theme="bonusBanner"
+        valueProp="Explore eligible ways to receive additional VEs"
       />
 
       <RewardBanner
@@ -436,6 +443,7 @@ function App() {
         }
         visualLabel="Verify & complete"
         theme="captchaBanner"
+        valueProp="Complete eligible tasks and receive rewards"
       />
 
       <RewardBanner
@@ -452,6 +460,7 @@ function App() {
         }
         visualLabel="Redeem rewards"
         theme="exchangeBanner"
+        valueProp="Redeem earned VEs through supported options"
       />
     </main>
   );
