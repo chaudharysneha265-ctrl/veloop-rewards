@@ -168,6 +168,34 @@
   line-height: 1.6;
 }
 
+.rewardHighlight {
+  width: min(100%, 600px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 20px;
+  padding: 10px 14px;
+  border-left: 2px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.rewardHighlight span {
+  flex-shrink: 0;
+  color: #8f93a8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rewardHighlight strong {
+  color: #f3f4f8;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
 /* =========================
    CTA BUTTON
 ========================= */
@@ -202,10 +230,7 @@
   transform: translateY(0);
 }
 
-.rewardButton:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 3px;
-}
+.rewardButton:focus-visible,
 
 /* =========================
    CTA MESSAGE
@@ -746,6 +771,10 @@
     line-height: 1.55;
   }
 
+  .rewardHighlight {
+    margin-bottom: 16px;
+  }
+
   .rewardButton {
     width: 100%;
   }
@@ -801,6 +830,12 @@
 
   .bannerText {
     font-size: 14px;
+  }
+
+  .rewardHighlight {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .bannerVisualArea {
