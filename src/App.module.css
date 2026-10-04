@@ -230,7 +230,10 @@
   transform: translateY(0);
 }
 
-.rewardButton:focus-visible,
+.rewardButton:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
 
 /* =========================
    CTA MESSAGE
@@ -588,7 +591,8 @@
 .ctaClose:focus-visible,
 .exchangeOption:focus-visible,
 .claimBonusButton:focus-visible,
-.swapField input:focus-visible {
+.swapField input:focus-visible,
+.rewardButton:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 3px;
 }
