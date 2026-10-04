@@ -706,7 +706,7 @@
   }
 
   .bannerContent {
-    gap: 25px;
+    gap: 18px;
   }
 
   .bannerTitle {
@@ -741,8 +741,8 @@
   }
 
   .rewardBanner {
-    min-height: 0;
-    padding: 28px 20px;
+    min-height: 360px;
+    padding: 22px 20px;
     border-radius: 20px;
   }
 
@@ -789,13 +789,13 @@
 
   .bannerVisualArea {
     width: 100%;
-    min-height: 220px;
+    min-height: 170px;
     flex: none;
   }
 
   .visualCard {
-    width: 220px;
-    height: 200px;
+    width: 200px;
+    height: 165px;
   }
 
   .visualMain {
@@ -825,7 +825,8 @@
   }
 
   .rewardBanner {
-    padding: 24px 16px;
+    min-height: 330px;
+    padding: 20px 16px;
   }
 
   .bannerTitle {
@@ -843,12 +844,12 @@
   }
 
   .bannerVisualArea {
-    min-height: 195px;
+    min-height: 155px;
   }
 
   .visualCard {
-    width: 195px;
-    height: 180px;
+    width: 180px;
+    height: 150px;
   }
 
   .mainVisualIcon {
