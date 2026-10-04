@@ -281,28 +281,35 @@ function RewardBanner({
                       <div className={styles.exchangePanel}>
                         <div className={styles.exchangeOptions}>
                           <button
-                            className={`${styles.exchangeOption} ${
-                              selectedExchange === "Rewards"
-                                ? styles.selected
-                                : ""
-                            }`}
+                            type="button"
+                            className={`${styles.exchangeOption} ${selectedExchange === "Rewards" ? styles.selected : ""}`}
+                            aria-pressed={selectedExchange === "Rewards"}
                             onClick={() => setSelectedExchange("Rewards")}
                           >
-                            <FaGift />
-                            Rewards
+                            <FaTrophy aria-hidden="true" />
+                            Reward
                           </button>
 
                           <button
-                            className={`${styles.exchangeOption} ${
-                              selectedExchange === "Wallet"
-                                ? styles.selected
-                                : ""
-                            }`}
-                            onClick={() => setSelectedExchange("Wallet")}
+                            type="button"
+                            className={`${styles.exchangeOption} ${selectedExchange === "Gift Card" ? styles.selected : ""}`}
+                            aria-pressed={selectedExchange === "Gift Card"}
+                            onClick={() => setSelectedExchange("Gift Card")}
                           >
-                            <FaWallet />
-                            Wallet
+                            <FaGift aria-hidden="true" />
+                            Gift Card
                           </button>
+
+                          <button
+                            type="button"
+                            className={`${styles.exchangeOption} ${selectedExchange === "UPI" ? styles.selected : ""}`}
+                            aria-pressed={selectedExchange === "UPI"}
+                            onClick={() => setSelectedExchange("UPI")}
+                          >
+                            <FaWallet aria-hidden="true" />
+                            UPI
+                          </button>
+
                         </div>
 
                         <button
