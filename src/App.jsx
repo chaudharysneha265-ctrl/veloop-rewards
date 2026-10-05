@@ -397,9 +397,38 @@ function App() {
         accent="#f4c95d"
         valueProp="Earn from eligible referral milestones"
         visual={
-          <div className={styles.visualComposition}>
-            <FaGift className={styles.mainVisualIcon} />
-            <FaUsers className={styles.secondaryVisualIcon} />
+          <div className={styles.referVisual}>
+            <div className={styles.referCoin referCoinOne}>
+              <FaCoins />
+            </div>
+            <div className={styles.referCoin referCoinTwo}>
+              <FaCoins />
+            </div>
+
+            <div className={styles.referGiftBox}>
+              <div className={styles.referGiftLid}>
+                <span />
+              </div>
+              <div className={styles.referGiftBody}>
+                <span className={styles.referGiftRibbonVertical} />
+                <span className={styles.referGiftRibbonHorizontal} />
+              </div>
+              <FaGift className={styles.referGiftIcon} />
+            </div>
+
+            <div className={styles.referPeople}>
+              <div className={styles.referPerson}>
+                <FaUsers />
+              </div>
+              <div className={styles.referPerson referPersonSmall}>
+                <FaUsers />
+              </div>
+            </div>
+
+            <div className={styles.referSharePill}>
+              <FaShareAlt />
+              <span>Share • Invite • Earn</span>
+            </div>
           </div>
         }
         visualLabel="Share & earn"
