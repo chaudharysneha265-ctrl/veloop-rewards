@@ -398,10 +398,10 @@ function App() {
         valueProp="Earn from eligible referral milestones"
         visual={
           <div className={styles.referVisual}>
-            <div className={styles.referCoin referCoinOne}>
+            <div className={`${styles.referCoin} ${styles.referCoinOne}`}>
               <FaCoins />
             </div>
-            <div className={styles.referCoin referCoinTwo}>
+            <div className={`${styles.referCoin} ${styles.referCoinTwo}`}>
               <FaCoins />
             </div>
 
@@ -420,7 +420,7 @@ function App() {
               <div className={styles.referPerson}>
                 <FaUsers />
               </div>
-              <div className={styles.referPerson referPersonSmall}>
+              <div className={`${styles.referPerson} ${styles.referPersonSmall}`}>
                 <FaUsers />
               </div>
             </div>
