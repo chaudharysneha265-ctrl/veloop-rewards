@@ -40,15 +40,17 @@
   --accent: #ffffff;
 
   width: 100%;
-  min-height: 420px;
-  margin-bottom: 24px;
-  padding: 42px 48px;
-  border-radius: 26px;
+  min-height: 410px;
+  margin-bottom: 22px;
+  padding: 32px 44px;
+  border-radius: 24px;
   overflow: hidden;
   position: relative;
   background: linear-gradient(135deg, #202238, #161827);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.035), 0 16px 45px rgba(0,0,0,0.16);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 48px rgba(0, 0, 0, 0.2);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -56,9 +58,11 @@
 }
 
 .rewardBanner:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 22px 52px rgba(0, 0, 0, 0.26);
 }
 
 .rewardBanner:focus-visible {
@@ -111,72 +115,103 @@
 
 .bannerContent {
   width: 100%;
-  min-height: 330px;
+  min-height: 344px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 64px;
+  gap: 32px;
   position: relative;
   z-index: 2;
 }
 
 .bannerInfo {
-  flex: 1;
+  flex: 1 1 52%;
   min-width: 0;
+  max-width: 610px;
+  position: relative;
+  z-index: 3;
 }
 
-.bannerIcon {
-  font-size: 44px;
-  margin-bottom: 14px;
-}
-
-.bannerLabel {
-  margin: 0 0 10px;
-  color: #8f93a8;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.bannerTitle {
-  margin: 0 0 16px;
-  color: #ffffff;
-  font-size: 42px;
-  line-height: 1.15;
-  font-weight: 700;
-}
-
-.bannerText {
-  max-width: 600px;
-  margin: 0 0 24px;
-  color: #c7c9d6;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-.rewardHighlight {
-  width: min(100%, 600px);
+.bannerEyebrow {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-bottom: 18px;
+}
+
+.bannerIcon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  color: var(--accent);
+  font-size: 18px;
+}
+
+.bannerLabel {
+  margin: 0;
+  color: #b7bbcd;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+  line-height: 1.5;
+}
+
+.bannerLabel span {
+  padding: 0 4px;
+  color: var(--accent);
+}
+
+.bannerTitle {
+  margin: 0 0 12px;
+  color: #ffffff;
+  font-size: clamp(34px, 3.2vw, 46px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.bannerText {
+  max-width: 510px;
   margin: 0 0 20px;
-  padding: 10px 14px;
+  color: #c4c8d8;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.rewardHighlight {
+  width: min(100%, 490px);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 0 0 20px;
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
   border-left: 2px solid var(--accent);
-  border-radius: 0 10px 10px 0;
-  background: rgba(255, 255, 255, 0.045);
+  border-radius: 0 12px 12px 0;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.075),
+    rgba(255, 255, 255, 0.025)
+  );
 }
 
 .rewardHighlight span {
   flex-shrink: 0;
-  color: #8f93a8;
-  font-size: 11px;
+  padding-top: 2px;
+  color: #a5aabd;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .rewardHighlight strong {
-  color: #f3f4f8;
+  color: #f5f6fb;
   font-size: 13px;
   line-height: 1.4;
   font-weight: 600;
@@ -192,18 +227,19 @@
   justify-content: center;
   gap: 10px;
   min-height: 48px;
-  padding: 14px 22px;
+  padding: 13px 20px;
   border: none;
-  border-radius: 12px;
+  border-radius: 11px;
   background: var(--accent);
   color: #161827;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
     filter 0.25s ease;
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .rewardButton:hover {
@@ -344,36 +380,88 @@
 ========================= */
 
 .bannerVisualArea {
-  flex: 0 0 40%;
-  min-height: 320px;
+  flex: 0 1 48%;
+  min-height: 344px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.bannerVisualArea::before {
+  width: 75%;
+  height: 75%;
+  position: absolute;
+  right: 5%;
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+  opacity: 0.11;
+  filter: blur(65px);
 }
 
 .visualCard {
-  width: 310px;
-  height: 275px;
-  position: relative;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   z-index: 2;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  border-radius: 28px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255,255,255,0.06);
-  backdrop-filter: blur(10px);
-  animation: visualFloat 4s ease-in-out infinite;
+  animation: visualFloat 6s ease-in-out infinite;
 }
 
 .visualMain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 22px;
+  background: rgba(17, 19, 39, 0.5);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.2);
+  -webkit-mask-image: linear-gradient(to right, transparent 30%, #000 52%);
+  mask-image: linear-gradient(to right, transparent 30%, #000 52%);
   font-size: 80px;
+}
+
+.visualMain::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(22, 24, 39, 0.76) 0%,
+      rgba(22, 24, 39, 0.22) 22%,
+      transparent 42%
+    ),
+    linear-gradient(90deg, transparent 64%, rgba(22, 24, 39, 0.12));
+  content: "";
+  pointer-events: none;
+}
+
+.bannerArtwork {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  transform: scale(1.24);
+  transform-origin: right center;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.rewardBanner:hover .bannerArtwork {
+  transform: scale(1.29);
 }
 
 .visualComposition {
@@ -868,8 +956,8 @@
   }
 
   .rewardBanner {
-    min-height: 400px;
-    padding: 34px;
+    min-height: 390px;
+    padding: 28px 30px;
   }
 
   .bannerContent {
@@ -885,12 +973,12 @@
   }
 
   .bannerVisualArea {
-    flex-basis: 38%;
+    flex-basis: 42%;
+    min-height: 320px;
   }
 
   .visualCard {
-    width: 250px;
-    height: 235px;
+    height: 100%;
   }
 
   .mainVisualIcon {
@@ -912,8 +1000,8 @@
   }
 
   .rewardBanner {
-    min-height: 360px;
-    padding: 22px 20px;
+    min-height: 450px;
+    padding: 20px;
     border-radius: 20px;
   }
 
@@ -921,7 +1009,7 @@
     min-height: 0;
     flex-direction: column;
     align-items: stretch;
-    gap: 20px;
+    gap: 12px;
   }
 
   .bannerInfo {
@@ -929,25 +1017,31 @@
   }
 
   .bannerIcon {
-    font-size: 34px;
-    margin-bottom: 10px;
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    border-radius: 11px;
+    font-size: 15px;
   }
 
   .bannerLabel {
-    font-size: 10px;
+    font-size: 9px;
+    letter-spacing: 1px;
   }
 
   .bannerTitle {
+    margin-bottom: 12px;
     font-size: 31px;
   }
 
   .bannerText {
+    margin-bottom: 16px;
     font-size: 15px;
     line-height: 1.55;
   }
 
   .rewardHighlight {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .rewardButton {
@@ -960,13 +1054,22 @@
 
   .bannerVisualArea {
     width: 100%;
-    min-height: 170px;
+    min-height: 112px;
     flex: none;
   }
 
   .visualCard {
-    width: 200px;
-    height: 165px;
+    height: 112px;
+    min-height: 0;
+  }
+
+  .visualMain {
+    -webkit-mask-image: linear-gradient(to right, transparent 38%, #000 58%);
+    mask-image: linear-gradient(to right, transparent 38%, #000 58%);
+  }
+
+  .bannerArtwork {
+    transform: scale(1.4);
   }
 
   .visualMain {
@@ -987,9 +1090,6 @@
     transform: scale(0.8);
   }
 
-  .visualBadge {
-    margin-top: 10px;
-  }
 }
 
 /* =========================
@@ -1002,8 +1102,8 @@
   }
 
   .rewardBanner {
-    min-height: 330px;
-    padding: 20px 16px;
+    min-height: 440px;
+    padding: 18px 16px;
   }
 
   .bannerTitle {
@@ -1021,20 +1121,13 @@
   }
 
   .bannerVisualArea {
-    min-height: 155px;
+    min-height: 100px;
   }
 
   .visualCard {
-    width: 180px;
-    height: 150px;
-  }
-
-  .mainVisualIcon {
-    font-size: 55px;
-  }
-
-  .secondaryVisualIcon {
-    font-size: 26px;
+    width: 100%;
+    height: 100px;
+    min-height: 0;
   }
 
   .referVisual {

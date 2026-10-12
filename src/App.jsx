@@ -1,13 +1,11 @@
 import { useState } from "react";
 import styles from "./App.module.css";
-
 import {
   FaGift,
   FaExchangeAlt,
   FaCoins,
   FaShieldAlt,
   FaWallet,
-  FaUsers,
   FaArrowRight,
   FaCheckCircle,
   FaRandom,
@@ -16,328 +14,274 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 
-function RewardBanner({
-  icon,
-  title,
-  text,
-  button,
-  accent,
-  visual,
-  visualLabel,
-  valueProp,
-  theme = "default",
-}) {
-  const [showMessage, setShowMessage] = useState(false);
-  const [bonusClaimed, setBonusClaimed] = useState(false);
-  const [captchaStarted, setCaptchaStarted] = useState(false);
-  const [swapAmount, setSwapAmount] = useState("");
-  const [swapDone, setSwapDone] = useState(false);
-  const [selectedExchange, setSelectedExchange] = useState("");
-  const [exchangeDone, setExchangeDone] = useState(false);
-  const [referralDone, setReferralDone] = useState(false);
+const banners = [
+  {
+    title: "Refer & Earn",
+    category: "MEMBER REFERRALS",
+    text: "Invite friends and earn rewards on eligible referrals.",
+    button: "Refer & Earn",
+    accent: "#f4c95d",
+    value: "Earn rewards when referral milestones complete",
+    image: "/image.png",
+    theme: "referBanner",
+    icon: <FaGift />,
+  },
+  {
+    title: "Swap Center",
+    category: "REWARD CONVERSION",
+    text: "Convert eligible VEs into supported currencies, vouchers, or rewards.",
+    button: "Open Swap Center",
+    accent: "#8ab4f8",
+    value: "Convert VEs into supported rewards",
+    image: "/Futuristic%20Neon%20Swap%20Rewards%20Banner.png",
+    theme: "swapBanner",
+    icon: <FaExchangeAlt />,
+  },
+  {
+    title: "Get Extra VEs",
+    category: "BONUS OPPORTUNITIES",
+    text: "Complete eligible activities and promotions to earn extra VEs.",
+    button: "Explore Bonus",
+    accent: "#e7b85c",
+    value: "Earn extra VEs from eligible activities",
+    image: "/Bonus%20VEs_%20Grow%20Faster,%20Earn%20More.png",
+    theme: "bonusBanner",
+    icon: <FaCoins />,
+  },
+  {
+    title: "Captcha Tasks",
+    category: "VERIFIED TASKS",
+    text: "Complete captcha tasks accurately to verify, finish tasks, and earn eligible rewards.",
+    button: "Start Task",
+    accent: "#9da7ff",
+    value: "Task → Verify → Reward",
+    image: "/Captcha%20Tasks_%20Verify,%20Complete,%20Earn.png",
+    theme: "captchaBanner",
+    icon: <FaShieldAlt />,
+  },
+  {
+    title: "Exchange Center",
+    category: "REDEEM REWARDS",
+    text: "Explore available redemption options and exchange eligible VEs for supported rewards.",
+    button: "Open Exchange Center",
+    accent: "#d8c6ff",
+    value: "Redeem VEs for eligible rewards",
+    image: "/Neon%20Rewards%20Exchange%20Centre.png",
+    theme: "exchangeBanner",
+    icon: <FaWallet />,
+  },
+];
 
-  const handleClick = () => {
-    setShowMessage(true);
+function RewardBanner({ banner }) {
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  const [amount, setAmount] = useState("");
+  const [selected, setSelected] = useState("");
+  const [completed, setCompleted] = useState(false);
+
+  const showMessage = (text) => {
+    setMessage(text);
   };
 
-  const handleReferral = async () => {
-    const referralText =
-      "Join me on VELOOP Rewards and explore eligible earning opportunities!";
-
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: "VELOOP Rewards",
-          text: referralText,
-        });
-      } else if (navigator.clipboard) {
-        await navigator.clipboard.writeText(referralText);
+  const handleAction = async () => {
+    if (banner.title === "Refer & Earn") {
+      const referralText =
+        "Join me on VELOOP Rewards and explore eligible earning opportunities!";
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: "VELOOP Rewards",
+            text: referralText,
+          });
+          showMessage("Referral shared successfully!");
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(referralText);
+          showMessage("Referral message copied!");
+        } else {
+          showMessage(referralText);
+        }
+      } catch {
+        showMessage("You can invite friends using your referral message.");
       }
-
-      setReferralDone(true);
-      setShowMessage(true);
-    } catch {
-      setShowMessage(true);
+      return;
     }
-  };
 
-  const handleSwap = () => {
-    if (!swapAmount || Number(swapAmount) <= 0) return;
-    setSwapDone(true);
-  };
+    if (banner.title === "Swap Center") {
+      if (!amount || Number(amount) <= 0) {
+        showMessage("Please enter a valid amount of VEs.");
+      } else {
+        setCompleted(true);
+        showMessage(
+          `Swap request prepared for ${amount} VEs.`
+        );
+      }
+      return;
+    }
 
-  const handleCaptcha = () => {
-    setCaptchaStarted(true);
-    setShowMessage(true);
-  };
+    if (banner.title === "Get Extra VEs") {
+      setCompleted(true);
+      showMessage("Bonus marked as claimed for this demo.");
+      return;
+    }
 
-  const handleExchange = () => {
-    if (!selectedExchange) return;
-    setExchangeDone(true);
+    if (banner.title === "Captcha Tasks") {
+      setCompleted(true);
+      showMessage("Captcha task started in demo mode.");
+      return;
+    }
+
+    if (banner.title === "Exchange Center") {
+      if (!selected) {
+        showMessage("Please select a redemption option first.");
+      } else {
+        setCompleted(true);
+        showMessage(`${selected} exchange request prepared.`);
+      }
+    }
   };
 
   return (
     <section
-      className={`${styles.rewardBanner} ${styles[theme]}`}
+      className={`${styles.rewardBanner} ${styles[banner.theme]}`}
+      style={{ "--accent": banner.accent }}
     >
       <div className={styles.bannerContent}>
         <div className={styles.bannerInfo}>
-          <div
-            className={styles.bannerIcon}
-            style={{ color: accent }}
-            aria-hidden="true"
-          >
-            {icon}
+          <div className={styles.bannerEyebrow}>
+            <span
+              className={styles.bannerIcon}
+              style={{ "--accent": banner.accent }}
+              aria-hidden="true"
+            >
+              {banner.icon}
+            </span>
+            <p className={styles.bannerLabel}>
+              VELOOP REWARDS <span aria-hidden="true">/</span> {banner.category}
+            </p>
           </div>
 
-          <p className={styles.bannerLabel}>VELOOP REWARDS</p>
-
-          <h2 className={styles.bannerTitle}>{title}</h2>
-
-          <p className={styles.bannerText}>{text}</p>
+          <h2 className={styles.bannerTitle}>{banner.title}</h2>
+          <p className={styles.bannerText}>{banner.text}</p>
 
           <div className={styles.rewardHighlight}>
-            <span>Value</span>
-            <strong>{valueProp}</strong>
+            <span>Reward value</span>
+            <strong>{banner.value}</strong>
           </div>
 
           <button
             type="button"
             className={styles.rewardButton}
-            style={{ "--accent": accent }}
-            onClick={handleClick}
-            aria-label={button}
+            style={{ "--accent": banner.accent }}
+            onClick={() => {
+              setOpen(!open);
+              setMessage("");
+            }}
+            aria-expanded={open}
           >
-            <span>{button}</span>
+            <span>{banner.button}</span>
             <FaArrowRight aria-hidden="true" />
           </button>
 
-          {showMessage && (
+          {open && (
             <div
               className={styles.ctaMessage}
-              style={{ "--accent": accent }}
+              style={{ "--accent": banner.accent }}
               role="status"
             >
               <div className={styles.ctaMessageContent}>
                 <FaCheckCircle className={styles.ctaSuccessIcon} />
 
                 <div>
-                  <strong>{title}</strong>
+                  <strong>{banner.title}</strong>
 
-                  {title === "Refer & Earn" && (
-                    <>
-                      <p>
-                        Share VELOOP Rewards with your friends and invite them
-                        to explore eligible earning opportunities.
-                      </p>
-
-                      <button
-                        type="button"
-                        className={styles.claimBonusButton}
-                        style={{ "--accent": accent }}
-                        onClick={handleReferral}
-                      >
-                        {referralDone ? (
-                          <>
-                            <FaCheckCircle /> Referral Ready
-                          </>
-                        ) : (
-                          <>
-                            <FaShareAlt /> Share Referral
-                          </>
-                        )}
-                      </button>
-                    </>
+                  {banner.title === "Swap Center" && (
+                    <div className={styles.swapPanel}>
+                      <label htmlFor="swap-amount">
+                        Amount of VEs
+                      </label>
+                      <input
+                        id="swap-amount"
+                        type="number"
+                        min="1"
+                        value={amount}
+                        onChange={(event) => {
+                          setAmount(event.target.value);
+                          setCompleted(false);
+                        }}
+                        placeholder="Enter amount"
+                      />
+                      <p>From: VE Balance → To: Voucher / Reward</p>
+                    </div>
                   )}
 
-                  {title === "Swap Center" && (
-                    <>
-                      <p>
-                        Enter the amount of VEs you want to swap into a supported
-                        reward or voucher balance.
-                      </p>
-
-                      <div className={styles.swapPanel}>
-                        <div className={styles.swapField}>
-                          <label htmlFor="swapAmount">Amount of VEs</label>
-
-                          <input
-                            id="swapAmount"
-                            type="number"
-                            min="1"
-                            value={swapAmount}
-                            onChange={(e) => setSwapAmount(e.target.value)}
-                            placeholder="Enter amount"
-                          />
-                        </div>
-
-                        <div className={styles.swapOptions}>
-                          <div className={styles.swapOption}>
-                            <span>From</span>
-                            <strong>VE Balance</strong>
-                          </div>
-
-                          <FaExchangeAlt />
-
-                          <div className={styles.swapOption}>
-                            <span>To</span>
-                            <strong>Voucher / Reward</strong>
-                          </div>
-                        </div>
-
-                        <button
-                          type="button"
-                          className={styles.claimBonusButton}
-                          style={{ "--accent": accent }}
-                          onClick={handleSwap}
-                        >
-                          <FaRandom />
-                          {swapDone ? "Swap Completed" : "Swap Now"}
-                        </button>
-
-                        {swapDone && (
-                          <p className={styles.swapSuccess}>
-                            <FaCheckCircle />
-                            Swap request completed successfully.
-                          </p>
-                        )}
-                      </div>
-                    </>
-                  )}
-
-                  {title === "Get Extra VEs" && (
-                    <>
-                      <p>
-                        Complete eligible activities to unlock your bonus
-                        reward.
-                      </p>
-
-                      <div className={styles.bonusProgress}>
-                        <div className={styles.bonusProgressTop}>
-                          <span>Bonus progress</span>
-                          <span>{bonusClaimed ? "100%" : "70%"}</span>
-                        </div>
-
-                        <div className={styles.progressTrack}>
-                          <div
-                            className={`${styles.progressFill} ${
-                              bonusClaimed ? styles.completed : ""
+                  {banner.title === "Exchange Center" && (
+                    <div className={styles.exchangePanel}>
+                      <p>Select a redemption option:</p>
+                      <div className={styles.exchangeOptions}>
+                        {["Rewards", "Gift Card", "UPI"].map((option) => (
+                          <button
+                            type="button"
+                            key={option}
+                            className={`${styles.exchangeOption} ${
+                              selected === option ? styles.selected : ""
                             }`}
-                          />
-                        </div>
+                            aria-pressed={selected === option}
+                            onClick={() => {
+                              setSelected(option);
+                              setCompleted(false);
+                            }}
+                          >
+                            {option === "Rewards" && <FaTrophy />}
+                            {option === "Gift Card" && <FaGift />}
+                            {option === "UPI" && <FaWallet />}
+                            {option}
+                          </button>
+                        ))}
                       </div>
-
-                      <button
-                        className={styles.claimBonusButton}
-                        style={{ "--accent": accent }}
-                        onClick={() => setBonusClaimed(true)}
-                        disabled={bonusClaimed}
-                      >
-                        {bonusClaimed ? (
-                          <>
-                            <FaCheckCircle /> Bonus Claimed
-                          </>
-                        ) : (
-                          <>
-                            <FaCoins /> Claim Bonus
-                          </>
-                        )}
-                      </button>
-                    </>
+                    </div>
                   )}
 
-                  {title === "Captcha Tasks" && (
-                    <>
-                      <p>
-                        Complete available captcha tasks accurately and earn
-                        rewards for eligible submissions.
-                      </p>
-
-                      <button
-                        className={styles.claimBonusButton}
-                        style={{ "--accent": accent }}
-                        onClick={handleCaptcha}
-                        disabled={captchaStarted}
-                      >
-                        {captchaStarted ? (
-                          <>
-                            <FaCheckCircle /> Task Started
-                          </>
-                        ) : (
-                          <>
-                            <FaShieldAlt /> Start Captcha Task
-                          </>
-                        )}
-                      </button>
-                    </>
+                  {banner.title === "Get Extra VEs" && (
+                    <p>
+                      Explore eligible activities to receive additional VEs.
+                    </p>
                   )}
 
-                  {title === "Exchange Center" && (
-                    <>
-                      <p>
-                        Select a supported redemption option for your earned VEs.
-                      </p>
-
-                      <div className={styles.exchangePanel}>
-                        <div className={styles.exchangeOptions}>
-                          <button
-                            type="button"
-                            className={`${styles.exchangeOption} ${selectedExchange === "Rewards" ? styles.selected : ""}`}
-                            aria-pressed={selectedExchange === "Rewards"}
-                            onClick={() => setSelectedExchange("Rewards")}
-                          >
-                            <FaTrophy aria-hidden="true" />
-                            Reward
-                          </button>
-
-                          <button
-                            type="button"
-                            className={`${styles.exchangeOption} ${selectedExchange === "Gift Card" ? styles.selected : ""}`}
-                            aria-pressed={selectedExchange === "Gift Card"}
-                            onClick={() => setSelectedExchange("Gift Card")}
-                          >
-                            <FaGift aria-hidden="true" />
-                            Gift Card
-                          </button>
-
-                          <button
-                            type="button"
-                            className={`${styles.exchangeOption} ${selectedExchange === "UPI" ? styles.selected : ""}`}
-                            aria-pressed={selectedExchange === "UPI"}
-                            onClick={() => setSelectedExchange("UPI")}
-                          >
-                            <FaWallet aria-hidden="true" />
-                            UPI
-                          </button>
-
-                        </div>
-
-                        <button
-                          className={styles.claimBonusButton}
-                          style={{ "--accent": accent }}
-                          onClick={handleExchange}
-                        >
-                          <FaExchangeAlt />
-                          {exchangeDone
-                            ? "Exchange Requested"
-                            : "Continue Exchange"}
-                        </button>
-
-                        {exchangeDone && (
-                          <p className={styles.exchangeSuccess}>
-                            <FaCheckCircle />
-                            Exchange request is ready for the next step.
-                          </p>
-                        )}
-                      </div>
-                    </>
+                  {banner.title === "Captcha Tasks" && (
+                    <p>
+                      Start an available captcha task and follow its
+                      instructions carefully.
+                    </p>
                   )}
+
+                  {banner.title === "Refer & Earn" && (
+                    <p>
+                      Invite friends to explore VELOOP Rewards and eligible
+                      earning opportunities.
+                    </p>
+                  )}
+
+                  <button
+                    type="button"
+                    className={styles.claimBonusButton}
+                    style={{ "--accent": banner.accent }}
+                    onClick={handleAction}
+                  >
+                    {banner.title === "Refer & Earn" && <FaShareAlt />}
+                    {banner.title === "Swap Center" && <FaRandom />}
+                    {banner.title === "Get Extra VEs" && <FaCoins />}
+                    {banner.title === "Captcha Tasks" && <FaShieldAlt />}
+                    {banner.title === "Exchange Center" && <FaExchangeAlt />}
+                    {completed ? "Completed" : "Continue"}
+                  </button>
+
+                  {message && <p>{message}</p>}
                 </div>
 
                 <button
                   type="button"
                   className={styles.ctaClose}
-                  onClick={() => setShowMessage(false)}
+                  onClick={() => setOpen(false)}
                   aria-label="Close message"
                 >
                   <FaTimes />
@@ -350,160 +294,32 @@ function RewardBanner({
         <div className={styles.bannerVisualArea}>
           <div
             className={styles.visualGlow}
-            style={{ "--accent": accent }}
+            style={{ "--accent": banner.accent }}
             aria-hidden="true"
           />
 
           <div className={styles.visualCard}>
-            <div
-              className={styles.visualMain}
-              style={{ color: accent }}
-              aria-hidden="true"
-            >
-              {visual}
+            <div className={styles.visualMain}>
+              <img
+                className={styles.bannerArtwork}
+                src={banner.image}
+                alt={`${banner.title} illustration`}
+              />
             </div>
 
-            <div className={styles.visualBadge}>
-              <FaCheckCircle />
-              <span>{visualLabel}</span>
-            </div>
           </div>
-
-          <div
-            className={`${styles.floatingDot} ${styles.dotOne}`}
-            style={{ background: accent }}
-            aria-hidden="true"
-          />
-
-          <div
-            className={`${styles.floatingDot} ${styles.dotTwo}`}
-            style={{ background: accent }}
-            aria-hidden="true"
-          />
         </div>
       </div>
     </section>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <main className={styles.rewardPage}>
-      <RewardBanner
-        icon={<FaGift />}
-        title="Refer & Earn"
-        text="Invite your friends to VELOOP Rewards and unlock rewards when they complete eligible activities."
-        button="Refer & Earn"
-        accent="#f4c95d"
-        valueProp="Earn from eligible referral milestones"
-        visual={
-          <div className={styles.referVisual}>
-            <div className={`${styles.referCoin} ${styles.referCoinOne}`}>
-              <FaCoins />
-            </div>
-            <div className={`${styles.referCoin} ${styles.referCoinTwo}`}>
-              <FaCoins />
-            </div>
-
-            <div className={styles.referGiftBox}>
-              <div className={styles.referGiftLid}>
-                <span />
-              </div>
-              <div className={styles.referGiftBody}>
-                <span className={styles.referGiftRibbonVertical} />
-                <span className={styles.referGiftRibbonHorizontal} />
-              </div>
-              <FaGift className={styles.referGiftIcon} />
-            </div>
-
-            <div className={styles.referPeople}>
-              <div className={styles.referPerson}>
-                <FaUsers />
-              </div>
-              <div className={`${styles.referPerson} ${styles.referPersonSmall}`}>
-                <FaUsers />
-              </div>
-            </div>
-
-            <div className={styles.referSharePill}>
-              <FaShareAlt />
-              <span>Share • Invite • Earn</span>
-            </div>
-          </div>
-        }
-        visualLabel="Share & earn"
-        theme="referBanner"
-      />
-
-      <RewardBanner
-        icon={<FaExchangeAlt />}
-        title="Swap Center"
-        text="Convert eligible reward balances between supported options and manage your rewards efficiently."
-        button="Open Swap Center"
-        accent="#8ab4f8"
-        visual={
-          <div className={styles.visualComposition}>
-            <FaRandom className={styles.mainVisualIcon} />
-            <FaCoins className={styles.secondaryVisualIcon} />
-          </div>
-        }
-        visualLabel="Convert rewards"
-        theme="swapBanner"
-        valueProp="Swap eligible VEs into supported rewards or vouchers"
-      />
-
-      <RewardBanner
-        icon={<FaCoins />}
-        title="Get Extra VEs"
-        text="Complete eligible activities and explore available opportunities to earn additional VEs."
-        button="Explore Bonus"
-        accent="#e7b85c"
-        visual={
-          <div className={styles.visualComposition}>
-            <FaCoins className={styles.mainVisualIcon} />
-            <FaTrophy className={styles.secondaryVisualIcon} />
-          </div>
-        }
-        visualLabel="Bonus opportunities"
-        theme="bonusBanner"
-        valueProp="Explore eligible ways to receive additional VEs"
-      />
-
-      <RewardBanner
-        icon={<FaShieldAlt />}
-        title="Captcha Tasks"
-        text="Complete available captcha tasks accurately and earn rewards for eligible submissions."
-        button="Start Task"
-        accent="#9da7ff"
-        visual={
-          <div className={styles.visualComposition}>
-            <FaShieldAlt className={styles.mainVisualIcon} />
-            <FaCheckCircle className={styles.secondaryVisualIcon} />
-          </div>
-        }
-        visualLabel="Verify & complete"
-        theme="captchaBanner"
-        valueProp="Complete eligible tasks and receive rewards"
-      />
-
-      <RewardBanner
-        icon={<FaWallet />}
-        title="Exchange Center"
-        text="Explore available redemption options and exchange eligible VEs for supported rewards."
-        button="Open Exchange Center"
-        accent="#d8c6ff"
-        visual={
-          <div className={styles.visualComposition}>
-            <FaWallet className={styles.mainVisualIcon} />
-            <FaCoins className={styles.secondaryVisualIcon} />
-          </div>
-        }
-        visualLabel="Redeem rewards"
-        theme="exchangeBanner"
-        valueProp="Redeem earned VEs through supported options"
-      />
+      {banners.map((banner) => (
+        <RewardBanner key={banner.title} banner={banner} />
+      ))}
     </main>
   );
 }
-
-export default App;
