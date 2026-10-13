@@ -39,16 +39,17 @@
 
 .rewardBanner {
   --accent: #ffffff;
+  --headline-accent: #ffffff;
 
   width: 100%;
   min-height: 410px;
   margin-bottom: 24px;
-  padding: 32px clamp(28px, 4vw, 56px);
-  border-radius: 28px;
+  padding: 26px clamp(24px, 4vw, 52px);
+  border-radius: 24px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(118deg, #20263b 0%, #191d30 54%, #171a2a 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(115deg, #080b19 0%, #0b1022 57%, #090d1b 100%);
+  border: 1px solid rgba(130, 143, 207, 0.24);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.055),
     0 20px 56px rgba(0, 0, 0, 0.25);
@@ -77,32 +78,96 @@
 
 .referBanner {
   background:
-    radial-gradient(ellipse at 82% 48%, rgba(244, 201, 93, 0.17), transparent 38%),
-    linear-gradient(118deg, #29283b 0%, #1b1d2e 58%, #171a2b 100%);
+    radial-gradient(ellipse at 84% 44%, rgba(55, 68, 182, 0.18), transparent 38%),
+    linear-gradient(115deg, #080b19 0%, #0a0b1d 57%, #090d1b 100%);
 }
 
 .swapBanner {
   background:
-    radial-gradient(ellipse at 82% 48%, rgba(92, 155, 255, 0.2), transparent 38%),
-    linear-gradient(118deg, #202941 0%, #191e32 58%, #171a2b 100%);
+    radial-gradient(ellipse at 84% 44%, rgba(68, 99, 168, 0.18), transparent 38%),
+    linear-gradient(115deg, #080b19 0%, #0a1020 57%, #090d1b 100%);
 }
 
 .bonusBanner {
   background:
-    radial-gradient(ellipse at 82% 48%, rgba(231, 184, 92, 0.18), transparent 38%),
-    linear-gradient(118deg, #29283a 0%, #1b1d2e 58%, #171a2b 100%);
+    radial-gradient(ellipse at 84% 44%, rgba(129, 103, 47, 0.17), transparent 38%),
+    linear-gradient(115deg, #080b19 0%, #0b1020 57%, #090d1b 100%);
 }
 
 .captchaBanner {
   background:
-    radial-gradient(ellipse at 82% 48%, rgba(76, 207, 229, 0.18), transparent 38%),
-    linear-gradient(118deg, #20283c 0%, #191e30 58%, #171a2b 100%);
+    radial-gradient(ellipse at 84% 44%, rgba(112, 77, 171, 0.19), transparent 38%),
+    linear-gradient(115deg, #080b19 0%, #0e0a20 57%, #090d1b 100%);
 }
 
 .exchangeBanner {
   background:
-    radial-gradient(ellipse at 82% 48%, rgba(77, 213, 208, 0.17), transparent 38%),
-    linear-gradient(118deg, #20283c 0%, #191e30 58%, #171a2b 100%);
+    radial-gradient(ellipse at 84% 44%, rgba(126, 97, 50, 0.17), transparent 38%),
+    linear-gradient(115deg, #080b19 0%, #0e0d1b 57%, #090d1b 100%);
+}
+
+.referBanner {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.referBanner .bannerContent,
+.referBanner .bannerVisualArea {
+  min-height: 310px;
+}
+
+.bannerFeatureStrip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  min-height: 56px;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border: 1px solid rgba(119, 133, 200, 0.16);
+  border-radius: 14px;
+  background: rgba(10, 14, 31, 0.76);
+}
+
+.bannerFeature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.bannerFeatureIcon {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.bannerFeatureCopy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.bannerFeatureCopy strong {
+  overflow: hidden;
+  color: #f5f3ff;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bannerFeatureCopy > span {
+  overflow: hidden;
+  color: #9ea4ba;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* =========================
@@ -115,15 +180,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(28px, 4vw, 64px);
+  gap: 0;
   position: relative;
   z-index: 2;
 }
 
 .bannerInfo {
-  flex: 1 1 52%;
+  flex: 0 1 47%;
   min-width: 0;
-  max-width: 620px;
+  max-width: 570px;
   position: relative;
   z-index: 3;
 }
@@ -131,29 +196,34 @@
 .bannerEyebrow {
   display: flex;
   align-items: center;
-  gap: 13px;
-  margin-bottom: 22px;
+  width: fit-content;
+  gap: 9px;
+  margin-bottom: 18px;
+  padding: 7px 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, rgba(255, 255, 255, 0.06));
+  border-radius: 999px;
+  background: rgba(12, 17, 38, 0.78);
 }
 
 .bannerIcon {
-  width: 44px;
-  height: 44px;
-  flex: 0 0 44px;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
   display: grid;
   place-items: center;
-  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--accent);
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .bannerLabel {
   margin: 0;
-  color: #c0c5d6;
-  font-size: 10px;
+  color: var(--accent);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.25px;
+  letter-spacing: 0.04em;
   line-height: 1.5;
 }
 
@@ -163,20 +233,32 @@
 }
 
 .bannerTitle {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: #ffffff;
-  font-size: clamp(36px, 3.3vw, 50px);
-  line-height: 1.04;
+  font-size: clamp(40px, 4.2vw, 58px);
+  line-height: 1.02;
   font-weight: 700;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.04em;
+}
+
+.bannerTitle > span {
+  display: block;
+}
+
+.bannerTitleAccent {
+  width: fit-content;
+  color: transparent;
+  background: var(--headline-accent);
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .bannerText {
-  max-width: 500px;
-  margin: 0 0 22px;
-  color: #c7cbda;
-  font-size: 16px;
-  line-height: 1.7;
+  max-width: 440px;
+  margin: 0 0 24px;
+  color: #c3c6d4;
+  font-size: 17px;
+  line-height: 1.55;
 }
 
 .rewardHighlight {
@@ -222,20 +304,32 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 48px;
-  padding: 13px 20px;
-  border: none;
-  border-radius: 11px;
-  background: var(--accent);
-  color: #161827;
-  font-size: 14px;
+  min-height: 56px;
+  padding: 15px 25px;
+  border: 1px solid color-mix(in srgb, var(--accent) 68%, #ffffff);
+  border-radius: 13px;
+  background: linear-gradient(105deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #ffffff));
+  color: #101222;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
     filter 0.25s ease;
-  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 20%, transparent);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.referBanner .rewardButton {
+  border-color: transparent;
+  background: linear-gradient(105deg, #12bfe7, #5932ed);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(77, 69, 239, 0.28);
+}
+
+.bonusBanner .rewardButton,
+.captchaBanner .rewardButton {
+  color: #151321;
 }
 
 .rewardButton:hover {
@@ -376,7 +470,8 @@
 ========================= */
 
 .bannerVisualArea {
-  flex: 0 1 48%;
+  flex: 1 1 53%;
+  min-width: 0;
   min-height: 344px;
   position: relative;
   display: flex;
@@ -384,9 +479,7 @@
   justify-content: center;
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  background: rgba(10, 14, 30, 0.42);
+  border-radius: 0 18px 18px 0;
 }
 
 .bannerVisualArea::before {
@@ -424,10 +517,10 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: inherit;
-  background: rgba(17, 19, 39, 0.25);
-  -webkit-mask-image: linear-gradient(to right, transparent 14%, #000 40%);
-  mask-image: linear-gradient(to right, transparent 14%, #000 40%);
+  border-radius: 0 18px 18px 0;
+  background: transparent;
+  -webkit-mask-image: linear-gradient(to right, transparent 3%, #000 30%);
+  mask-image: linear-gradient(to right, transparent 3%, #000 30%);
   font-size: 80px;
 }
 
@@ -435,8 +528,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(16, 19, 34, 0.25), transparent 34%),
-    linear-gradient(0deg, rgba(16, 19, 34, 0.12), transparent 28%);
+    linear-gradient(90deg, rgba(8, 11, 25, 0.78), transparent 31%),
+    linear-gradient(0deg, rgba(8, 11, 25, 0.14), transparent 28%);
   content: "";
   pointer-events: none;
 }
@@ -449,21 +542,29 @@
   height: 100%;
   object-fit: cover;
   object-position: right center;
-  transform: scale(1.38);
+  transform: scale(1.32);
   transform-origin: right center;
   transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .rewardBanner:hover .bannerArtwork {
-  transform: scale(1.44);
+  transform: scale(1.37);
 }
 
-.bonusBanner .bannerArtwork {
-  transform: scale(1.52);
+.swapBanner .bannerArtwork {
+  transform: scale(1.08);
 }
 
-.bonusBanner:hover .bannerArtwork {
-  transform: scale(1.58);
+.swapBanner:hover .bannerArtwork {
+  transform: scale(1.12);
+}
+
+.exchangeBanner .bannerArtwork {
+  transform: scale(1.45);
+}
+
+.exchangeBanner:hover .bannerArtwork {
+  transform: scale(1.5);
 }
 
 .visualComposition {
@@ -979,6 +1080,15 @@
     min-height: 320px;
   }
 
+  .bannerFeatureStrip {
+    display: none;
+  }
+
+  .referBanner .bannerContent,
+  .referBanner .bannerVisualArea {
+    min-height: 320px;
+  }
+
   .visualCard {
     height: 100%;
   }
@@ -1019,25 +1129,24 @@
   }
 
   .bannerIcon {
-    width: 36px;
-    height: 36px;
-    flex-basis: 36px;
-    border-radius: 11px;
-    font-size: 15px;
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+    font-size: 14px;
   }
 
   .bannerLabel {
-    font-size: 9px;
-    letter-spacing: 1px;
+    font-size: 11px;
+    letter-spacing: 0.03em;
   }
 
   .bannerTitle {
-    margin-bottom: 12px;
-    font-size: 31px;
+    margin-bottom: 10px;
+    font-size: 34px;
   }
 
   .bannerText {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     font-size: 15px;
     line-height: 1.55;
   }
@@ -1056,34 +1165,52 @@
 
   .bannerVisualArea {
     width: 100%;
-    min-height: 150px;
+    min-height: 170px;
     flex: none;
+    border-radius: 15px;
+  }
+
+  .referBanner .bannerContent {
+    min-height: 0;
+  }
+
+  .referBanner .bannerVisualArea {
+    min-height: 170px;
   }
 
   .visualCard {
-    height: 150px;
+    height: 170px;
     min-height: 0;
   }
 
   .visualMain {
-    -webkit-mask-image: linear-gradient(to right, transparent 5%, #000 27%);
-    mask-image: linear-gradient(to right, transparent 5%, #000 27%);
+    border-radius: 15px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 22%);
+    mask-image: linear-gradient(to right, transparent, #000 22%);
   }
 
   .bannerArtwork {
-    transform: scale(1.28);
+    transform: scale(1.22);
   }
 
   .rewardBanner:hover .bannerArtwork {
-    transform: scale(1.32);
+    transform: scale(1.26);
   }
 
-  .bonusBanner .bannerArtwork {
-    transform: scale(1.38);
+  .swapBanner .bannerArtwork {
+    transform: scale(1.03);
   }
 
-  .bonusBanner:hover .bannerArtwork {
-    transform: scale(1.42);
+  .swapBanner:hover .bannerArtwork {
+    transform: scale(1.06);
+  }
+
+  .exchangeBanner .bannerArtwork {
+    transform: scale(1.22);
+  }
+
+  .exchangeBanner:hover .bannerArtwork {
+    transform: scale(1.26);
   }
 
   .visualMain {
@@ -1121,7 +1248,7 @@
   }
 
   .bannerTitle {
-    font-size: 28px;
+    font-size: 31px;
   }
 
   .bannerText {
@@ -1135,12 +1262,12 @@
   }
 
   .bannerVisualArea {
-    min-height: 140px;
+    min-height: 155px;
   }
 
   .visualCard {
     width: 100%;
-    height: 140px;
+    height: 155px;
     min-height: 0;
   }
 

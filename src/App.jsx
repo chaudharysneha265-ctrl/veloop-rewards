@@ -6,67 +6,91 @@ import {
   FaCoins,
   FaShieldAlt,
   FaWallet,
+  FaBolt,
   FaArrowRight,
   FaCheckCircle,
   FaRandom,
   FaTrophy,
   FaTimes,
   FaShareAlt,
+  FaUsers,
+  FaLock,
 } from "react-icons/fa";
 
 const banners = [
   {
-    title: "Refer & Earn",
-    category: "MEMBER REFERRALS",
-    text: "Invite friends and earn rewards on eligible referrals.",
-    button: "Refer & Earn",
-    accent: "#f4c95d",
-    value: "Earn rewards when referral milestones complete",
-    image: "/image.png",
+    id: "refer",
+    title: "Refer Friends, Earn Rewards",
+    headlineFirst: "Refer Friends,",
+    headlineAccent: "Earn Rewards",
+    category: "REFER & EARN",
+    text: "Invite your friends to VELOOP Rewards and earn exciting rewards together.",
+    button: "Invite Now",
+    accent: "#25bde1",
+    headlineColor: "linear-gradient(100deg, #20cae9, #843dff)",
+    image: "/banner-refer-reference.jpg",
     theme: "referBanner",
     icon: <FaGift />,
+    features: [
+      { icon: <FaBolt />, title: "Easy to Share", text: "Invite with a link." },
+      { icon: <FaGift />, title: "Eligible Rewards", text: "For qualifying referrals." },
+      { icon: <FaLock />, title: "Clear Tracking", text: "Follow invite activity." },
+      { icon: <FaUsers />, title: "More Opportunities", text: "Grow your community." },
+    ],
   },
   {
+    id: "swap",
     title: "Swap Center",
+    headlineFirst: "Swap",
+    headlineAccent: "Center",
     category: "REWARD CONVERSION",
-    text: "Convert eligible VEs into supported currencies, vouchers, or rewards.",
+    text: "Convert eligible reward balances between supported currencies.",
     button: "Open Swap Center",
-    accent: "#8ab4f8",
-    value: "Convert VEs into supported rewards",
-    image: "/Futuristic%20Neon%20Swap%20Rewards%20Banner.png",
+    accent: "#d7ad68",
+    headlineColor: "linear-gradient(100deg, #e6c98c, #ffffff)",
+    image: "/banner-swap-reference.jpg",
     theme: "swapBanner",
     icon: <FaExchangeAlt />,
   },
   {
-    title: "Get Extra VEs",
+    id: "bonus",
+    title: "Boost Your VE Balance",
+    headlineFirst: "Boost Your",
+    headlineAccent: "VE Balance",
     category: "BONUS OPPORTUNITIES",
-    text: "Complete eligible activities and promotions to earn extra VEs.",
-    button: "Explore Bonus",
-    accent: "#e7b85c",
-    value: "Earn extra VEs from eligible activities",
-    image: "/Bonus%20VEs_%20Grow%20Faster,%20Earn%20More.png",
+    text: "Complete eligible activities and unlock additional VEs through special bonus opportunities.",
+    button: "Explore Bonuses",
+    accent: "#c99d59",
+    headlineColor: "linear-gradient(100deg, #f0d6a1, #c99d59)",
+    image: "/banner-bonus-reference.jpg",
     theme: "bonusBanner",
     icon: <FaCoins />,
   },
   {
-    title: "Captcha Tasks",
-    category: "VERIFIED TASKS",
-    text: "Complete captcha tasks accurately to verify, finish tasks, and earn eligible rewards.",
+    id: "captcha",
+    title: "Solve Captchas. Earn Gems.",
+    headlineFirst: "Solve Captchas.",
+    headlineAccent: "Earn Gems.",
+    category: "CAPTCHA REWARDS",
+    text: "Complete simple captcha tasks accurately and earn eligible Gem rewards.",
     button: "Start Task",
-    accent: "#4ccfe5",
-    value: "Task → Verify → Reward",
-    image: "/Captcha%20Tasks_%20Verify,%20Complete,%20Earn.png",
+    accent: "#a783ed",
+    headlineColor: "linear-gradient(100deg, #d9c5ff, #9763e7)",
+    image: "/banner-captcha-reference.jpg",
     theme: "captchaBanner",
     icon: <FaShieldAlt />,
   },
   {
-    title: "Exchange Center",
-    category: "REDEEM REWARDS",
-    text: "Explore available redemption options and exchange eligible VEs for supported rewards.",
+    id: "exchange",
+    title: "Convert Gems to VEs",
+    headlineFirst: "Convert Gems to",
+    headlineAccent: "VEs",
+    category: "REWARD EXCHANGE",
+    text: "Exchange eligible Gems into VEs and grow your VE balance.",
     button: "Open Exchange Center",
-    accent: "#4dd5d0",
-    value: "Redeem VEs for eligible rewards",
-    image: "/Neon%20Rewards%20Exchange%20Centre.png",
+    accent: "#d9b56b",
+    headlineColor: "linear-gradient(100deg, #ffffff, #9763e7 52%, #e7c87f)",
+    image: "/banner-exchange-reference.jpg",
     theme: "exchangeBanner",
     icon: <FaWallet />,
   },
@@ -84,7 +108,7 @@ function RewardBanner({ banner }) {
   };
 
   const handleAction = async () => {
-    if (banner.title === "Refer & Earn") {
+    if (banner.id === "refer") {
       const referralText =
         "Join me on VELOOP Rewards and explore eligible earning opportunities!";
       try {
@@ -106,7 +130,7 @@ function RewardBanner({ banner }) {
       return;
     }
 
-    if (banner.title === "Swap Center") {
+    if (banner.id === "swap") {
       if (!amount || Number(amount) <= 0) {
         showMessage("Please enter a valid amount of VEs.");
       } else {
@@ -118,19 +142,19 @@ function RewardBanner({ banner }) {
       return;
     }
 
-    if (banner.title === "Get Extra VEs") {
+    if (banner.id === "bonus") {
       setCompleted(true);
       showMessage("Bonus marked as claimed for this demo.");
       return;
     }
 
-    if (banner.title === "Captcha Tasks") {
+    if (banner.id === "captcha") {
       setCompleted(true);
       showMessage("Captcha task started in demo mode.");
       return;
     }
 
-    if (banner.title === "Exchange Center") {
+    if (banner.id === "exchange") {
       if (!selected) {
         showMessage("Please select a redemption option first.");
       } else {
@@ -143,7 +167,10 @@ function RewardBanner({ banner }) {
   return (
     <section
       className={`${styles.rewardBanner} ${styles[banner.theme]}`}
-      style={{ "--accent": banner.accent }}
+      style={{
+        "--accent": banner.accent,
+        "--headline-accent": banner.headlineColor,
+      }}
     >
       <div className={styles.bannerContent}>
         <div className={styles.bannerInfo}>
@@ -155,18 +182,14 @@ function RewardBanner({ banner }) {
             >
               {banner.icon}
             </span>
-            <p className={styles.bannerLabel}>
-              VELOOP REWARDS <span aria-hidden="true">/</span> {banner.category}
-            </p>
+            <p className={styles.bannerLabel}>{banner.category}</p>
           </div>
 
-          <h2 className={styles.bannerTitle}>{banner.title}</h2>
+          <h2 className={styles.bannerTitle}>
+            <span>{banner.headlineFirst}</span>
+            <span className={styles.bannerTitleAccent}>{banner.headlineAccent}</span>
+          </h2>
           <p className={styles.bannerText}>{banner.text}</p>
-
-          <div className={styles.rewardHighlight}>
-            <span>Reward value</span>
-            <strong>{banner.value}</strong>
-          </div>
 
           <button
             type="button"
@@ -194,7 +217,7 @@ function RewardBanner({ banner }) {
                 <div>
                   <strong>{banner.title}</strong>
 
-                  {banner.title === "Swap Center" && (
+                  {banner.id === "swap" && (
                     <div className={styles.swapPanel}>
                       <label htmlFor="swap-amount">
                         Amount of VEs
@@ -214,7 +237,7 @@ function RewardBanner({ banner }) {
                     </div>
                   )}
 
-                  {banner.title === "Exchange Center" && (
+                  {banner.id === "exchange" && (
                     <div className={styles.exchangePanel}>
                       <p>Select a redemption option:</p>
                       <div className={styles.exchangeOptions}>
@@ -241,20 +264,20 @@ function RewardBanner({ banner }) {
                     </div>
                   )}
 
-                  {banner.title === "Get Extra VEs" && (
+                  {banner.id === "bonus" && (
                     <p>
                       Explore eligible activities to receive additional VEs.
                     </p>
                   )}
 
-                  {banner.title === "Captcha Tasks" && (
+                  {banner.id === "captcha" && (
                     <p>
                       Start an available captcha task and follow its
                       instructions carefully.
                     </p>
                   )}
 
-                  {banner.title === "Refer & Earn" && (
+                  {banner.id === "refer" && (
                     <p>
                       Invite friends to explore VELOOP Rewards and eligible
                       earning opportunities.
@@ -267,11 +290,11 @@ function RewardBanner({ banner }) {
                     style={{ "--accent": banner.accent }}
                     onClick={handleAction}
                   >
-                    {banner.title === "Refer & Earn" && <FaShareAlt />}
-                    {banner.title === "Swap Center" && <FaRandom />}
-                    {banner.title === "Get Extra VEs" && <FaCoins />}
-                    {banner.title === "Captcha Tasks" && <FaShieldAlt />}
-                    {banner.title === "Exchange Center" && <FaExchangeAlt />}
+                    {banner.id === "refer" && <FaShareAlt />}
+                    {banner.id === "swap" && <FaRandom />}
+                    {banner.id === "bonus" && <FaCoins />}
+                    {banner.id === "captcha" && <FaShieldAlt />}
+                    {banner.id === "exchange" && <FaExchangeAlt />}
                     {completed ? "Completed" : "Continue"}
                   </button>
 
@@ -310,6 +333,21 @@ function RewardBanner({ banner }) {
           </div>
         </div>
       </div>
+      {banner.features && (
+        <div className={styles.bannerFeatureStrip}>
+          {banner.features.map((feature) => (
+            <div className={styles.bannerFeature} key={feature.title}>
+              <span className={styles.bannerFeatureIcon} aria-hidden="true">
+                {feature.icon}
+              </span>
+              <span className={styles.bannerFeatureCopy}>
+                <strong>{feature.title}</strong>
+                <span>{feature.text}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -318,7 +356,7 @@ export default function App() {
   return (
     <main className={styles.rewardPage}>
       {banners.map((banner) => (
-        <RewardBanner key={banner.title} banner={banner} />
+        <RewardBanner key={banner.id} banner={banner} />
       ))}
     </main>
   );
