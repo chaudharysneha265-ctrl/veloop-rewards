@@ -28,8 +28,9 @@
 .rewardPage {
   width: 100%;
   min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 44px);
   background: #161827;
-  padding: 24px;
 }
 
 /* =========================
@@ -41,16 +42,16 @@
 
   width: 100%;
   min-height: 410px;
-  margin-bottom: 22px;
-  padding: 32px 44px;
-  border-radius: 24px;
+  margin-bottom: 24px;
+  padding: 32px clamp(28px, 4vw, 56px);
+  border-radius: 28px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, #202238, #161827);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(118deg, #20263b 0%, #191d30 54%, #171a2a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 18px 48px rgba(0, 0, 0, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 20px 56px rgba(0, 0, 0, 0.25);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -58,11 +59,11 @@
 }
 
 .rewardBanner:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--accent) 28%, transparent);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 22px 52px rgba(0, 0, 0, 0.26);
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 26px 60px rgba(0, 0, 0, 0.32);
 }
 
 .rewardBanner:focus-visible {
@@ -76,37 +77,32 @@
 
 .referBanner {
   background:
-    radial-gradient(circle at 88% 45%, rgba(244, 201, 93, 0.16), transparent 34%),
-    radial-gradient(circle at 10% 90%, rgba(126, 154, 255, 0.07), transparent 30%),
-    linear-gradient(135deg, #24263f 0%, #181a2c 58%, #161827 100%);
+    radial-gradient(ellipse at 82% 48%, rgba(244, 201, 93, 0.17), transparent 38%),
+    linear-gradient(118deg, #29283b 0%, #1b1d2e 58%, #171a2b 100%);
 }
 
 .swapBanner {
   background:
-    radial-gradient(circle at 88% 45%, rgba(138, 180, 248, 0.17), transparent 34%),
-    radial-gradient(circle at 8% 88%, rgba(100, 130, 220, 0.07), transparent 30%),
-    linear-gradient(135deg, #22263f 0%, #181a2c 58%, #161827 100%);
+    radial-gradient(ellipse at 82% 48%, rgba(92, 155, 255, 0.2), transparent 38%),
+    linear-gradient(118deg, #202941 0%, #191e32 58%, #171a2b 100%);
 }
 
 .bonusBanner {
   background:
-    radial-gradient(circle at 88% 45%, rgba(231, 184, 92, 0.17), transparent 34%),
-    radial-gradient(circle at 10% 88%, rgba(255, 215, 120, 0.06), transparent 30%),
-    linear-gradient(135deg, #28263c 0%, #191a2c 58%, #161827 100%);
+    radial-gradient(ellipse at 82% 48%, rgba(231, 184, 92, 0.18), transparent 38%),
+    linear-gradient(118deg, #29283a 0%, #1b1d2e 58%, #171a2b 100%);
 }
 
 .captchaBanner {
   background:
-    radial-gradient(circle at 88% 45%, rgba(157, 167, 255, 0.17), transparent 34%),
-    radial-gradient(circle at 10% 88%, rgba(130, 140, 220, 0.06), transparent 30%),
-    linear-gradient(135deg, #24263e 0%, #181a2c 58%, #161827 100%);
+    radial-gradient(ellipse at 82% 48%, rgba(76, 207, 229, 0.18), transparent 38%),
+    linear-gradient(118deg, #20283c 0%, #191e30 58%, #171a2b 100%);
 }
 
 .exchangeBanner {
   background:
-    radial-gradient(circle at 88% 45%, rgba(216, 198, 255, 0.16), transparent 34%),
-    radial-gradient(circle at 10% 88%, rgba(145, 155, 220, 0.06), transparent 30%),
-    linear-gradient(135deg, #25263e 0%, #181a2c 58%, #161827 100%);
+    radial-gradient(ellipse at 82% 48%, rgba(77, 213, 208, 0.17), transparent 38%),
+    linear-gradient(118deg, #20283c 0%, #191e30 58%, #171a2b 100%);
 }
 
 /* =========================
@@ -119,7 +115,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: clamp(28px, 4vw, 64px);
   position: relative;
   z-index: 2;
 }
@@ -127,7 +123,7 @@
 .bannerInfo {
   flex: 1 1 52%;
   min-width: 0;
-  max-width: 610px;
+  max-width: 620px;
   position: relative;
   z-index: 3;
 }
@@ -135,18 +131,18 @@
 .bannerEyebrow {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 13px;
+  margin-bottom: 22px;
 }
 
 .bannerIcon {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
   display: grid;
   place-items: center;
   border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
-  border-radius: 13px;
+  border-radius: 14px;
   background: color-mix(in srgb, var(--accent) 11%, transparent);
   color: var(--accent);
   font-size: 18px;
@@ -154,7 +150,7 @@
 
 .bannerLabel {
   margin: 0;
-  color: #b7bbcd;
+  color: #c0c5d6;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.25px;
@@ -167,35 +163,35 @@
 }
 
 .bannerTitle {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   color: #ffffff;
-  font-size: clamp(34px, 3.2vw, 46px);
-  line-height: 1.08;
+  font-size: clamp(36px, 3.3vw, 50px);
+  line-height: 1.04;
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.045em;
 }
 
 .bannerText {
-  max-width: 510px;
-  margin: 0 0 20px;
-  color: #c4c8d8;
+  max-width: 500px;
+  margin: 0 0 22px;
+  color: #c7cbda;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .rewardHighlight {
-  width: min(100%, 490px);
+  width: min(100%, 500px);
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  margin: 0 0 20px;
-  padding: 12px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.075);
+  gap: 16px;
+  margin: 0 0 22px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-left: 2px solid var(--accent);
   border-radius: 0 12px 12px 0;
   background: linear-gradient(
     100deg,
-    rgba(255, 255, 255, 0.075),
+    rgba(255, 255, 255, 0.065),
     rgba(255, 255, 255, 0.025)
   );
 }
@@ -203,7 +199,7 @@
 .rewardHighlight span {
   flex-shrink: 0;
   padding-top: 2px;
-  color: #a5aabd;
+  color: #b5bbcc;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -211,7 +207,7 @@
 }
 
 .rewardHighlight strong {
-  color: #f5f6fb;
+  color: #f4f6fb;
   font-size: 13px;
   line-height: 1.4;
   font-weight: 600;
@@ -387,18 +383,23 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  background: rgba(10, 14, 30, 0.42);
 }
 
 .bannerVisualArea::before {
-  width: 75%;
-  height: 75%;
+  width: 68%;
+  height: 78%;
   position: absolute;
-  right: 5%;
+  right: 2%;
   border-radius: 50%;
   background: var(--accent);
   content: "";
-  opacity: 0.11;
-  filter: blur(65px);
+  opacity: 0.16;
+  filter: blur(72px);
+  z-index: -1;
 }
 
 .visualCard {
@@ -411,7 +412,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: visualFloat 6s ease-in-out infinite;
+  animation: none;
 }
 
 .visualMain {
@@ -423,12 +424,10 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  border-radius: 22px;
-  background: rgba(17, 19, 39, 0.5);
-  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.2);
-  -webkit-mask-image: linear-gradient(to right, transparent 30%, #000 52%);
-  mask-image: linear-gradient(to right, transparent 30%, #000 52%);
+  border-radius: inherit;
+  background: rgba(17, 19, 39, 0.25);
+  -webkit-mask-image: linear-gradient(to right, transparent 14%, #000 40%);
+  mask-image: linear-gradient(to right, transparent 14%, #000 40%);
   font-size: 80px;
 }
 
@@ -436,13 +435,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(
-      to bottom,
-      rgba(22, 24, 39, 0.76) 0%,
-      rgba(22, 24, 39, 0.22) 22%,
-      transparent 42%
-    ),
-    linear-gradient(90deg, transparent 64%, rgba(22, 24, 39, 0.12));
+    linear-gradient(90deg, rgba(16, 19, 34, 0.25), transparent 34%),
+    linear-gradient(0deg, rgba(16, 19, 34, 0.12), transparent 28%);
   content: "";
   pointer-events: none;
 }
@@ -455,13 +449,21 @@
   height: 100%;
   object-fit: cover;
   object-position: right center;
-  transform: scale(1.24);
+  transform: scale(1.38);
   transform-origin: right center;
   transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .rewardBanner:hover .bannerArtwork {
-  transform: scale(1.29);
+  transform: scale(1.44);
+}
+
+.bonusBanner .bannerArtwork {
+  transform: scale(1.52);
+}
+
+.bonusBanner:hover .bannerArtwork {
+  transform: scale(1.58);
 }
 
 .visualComposition {
@@ -1054,22 +1056,34 @@
 
   .bannerVisualArea {
     width: 100%;
-    min-height: 112px;
+    min-height: 150px;
     flex: none;
   }
 
   .visualCard {
-    height: 112px;
+    height: 150px;
     min-height: 0;
   }
 
   .visualMain {
-    -webkit-mask-image: linear-gradient(to right, transparent 38%, #000 58%);
-    mask-image: linear-gradient(to right, transparent 38%, #000 58%);
+    -webkit-mask-image: linear-gradient(to right, transparent 5%, #000 27%);
+    mask-image: linear-gradient(to right, transparent 5%, #000 27%);
   }
 
   .bannerArtwork {
-    transform: scale(1.4);
+    transform: scale(1.28);
+  }
+
+  .rewardBanner:hover .bannerArtwork {
+    transform: scale(1.32);
+  }
+
+  .bonusBanner .bannerArtwork {
+    transform: scale(1.38);
+  }
+
+  .bonusBanner:hover .bannerArtwork {
+    transform: scale(1.42);
   }
 
   .visualMain {
@@ -1121,12 +1135,12 @@
   }
 
   .bannerVisualArea {
-    min-height: 100px;
+    min-height: 140px;
   }
 
   .visualCard {
     width: 100%;
-    height: 100px;
+    height: 140px;
     min-height: 0;
   }
 
