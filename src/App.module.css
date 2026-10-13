@@ -235,8 +235,8 @@
 .bannerTitle {
   margin: 0 0 16px;
   color: #ffffff;
-  font-size: clamp(40px, 4.2vw, 58px);
-  line-height: 1.02;
+  font-size: clamp(50px, 5vw, 76px);
+  line-height: 0.99;
   font-weight: 700;
   letter-spacing: -0.04em;
 }
@@ -251,6 +251,18 @@
   background: var(--headline-accent);
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+.swapBanner .bannerTitle > span {
+  display: inline;
+}
+
+.swapBanner .bannerTitleAccent {
+  margin-left: 0;
+}
+
+.exchangeBanner .bannerTitle {
+  font-size: clamp(44px, 4.4vw, 66px);
 }
 
 .bannerText {
@@ -1068,7 +1080,7 @@
   }
 
   .bannerTitle {
-    font-size: 36px;
+    font-size: clamp(40px, 5.4vw, 52px);
   }
 
   .bannerText {
@@ -1142,7 +1154,11 @@
 
   .bannerTitle {
     margin-bottom: 10px;
-    font-size: 34px;
+    font-size: clamp(34px, 9vw, 42px);
+  }
+
+  .exchangeBanner .bannerTitle {
+    font-size: clamp(34px, 9vw, 42px);
   }
 
   .bannerText {
@@ -1248,7 +1264,11 @@
   }
 
   .bannerTitle {
-    font-size: 31px;
+    font-size: 35px;
+  }
+
+  .exchangeBanner .bannerTitle {
+    font-size: 35px;
   }
 
   .bannerText {

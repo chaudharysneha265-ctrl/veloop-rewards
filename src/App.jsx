@@ -187,6 +187,7 @@ function RewardBanner({ banner }) {
 
           <h2 className={styles.bannerTitle}>
             <span>{banner.headlineFirst}</span>
+            {" "}
             <span className={styles.bannerTitleAccent}>{banner.headlineAccent}</span>
           </h2>
           <p className={styles.bannerText}>{banner.text}</p>
