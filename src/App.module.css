@@ -206,22 +206,6 @@
   pointer-events: auto;
 }
 
-.referBanner .rewardButton {
-  position: absolute;
-  z-index: 3;
-  top: 68%;
-  left: 5.3%;
-  width: 26.5%;
-  height: 14%;
-  min-width: 0;
-  min-height: 0;
-  padding: 0;
-  border-color: transparent;
-  background: linear-gradient(110deg, #18c4e6, #6152ed);
-  box-shadow: 0 10px 26px rgba(77, 69, 239, 0.25);
-  color: #ffffff;
-}
-
 .rewardButton:hover {
   transform: translateY(-2px);
   filter: brightness(1.06);
@@ -252,8 +236,12 @@
   pointer-events: none;
 }
 
-.bonusBanner .bannerVisualArea {
+.referBanner .bannerVisualArea {
   aspect-ratio: 3 / 2;
+}
+
+.exchangeBanner .bannerVisualArea {
+  aspect-ratio: 3 / 1;
 }
 
 .visualGlow {
@@ -292,18 +280,19 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(1.05) saturate(0.96);
+  filter: none;
   transition: filter 300ms ease;
 }
 
 .rewardBanner:hover .bannerArtwork {
-  filter: brightness(1.08) saturate(0.98);
+  filter: brightness(1.02);
 }
 
 .bannerFeatureStrip {
   display: none;
 }
 
+.referBanner .rewardButton,
 .swapBanner .rewardButton,
 .captchaBanner .rewardButton,
 .exchangeBanner .rewardButton,
@@ -315,14 +304,13 @@
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: brightness(1.35) saturate(1.3) contrast(1.05);
-  -webkit-backdrop-filter: brightness(1.35) saturate(1.3) contrast(1.05);
+  background: transparent;
   box-shadow: none;
   color: transparent;
   font-size: 0;
 }
 
+.referBanner .rewardButton svg,
 .swapBanner .rewardButton svg,
 .captchaBanner .rewardButton svg,
 .exchangeBanner .rewardButton svg,
@@ -330,32 +318,39 @@
   opacity: 0;
 }
 
-.swapBanner .rewardButton {
-  top: 66%;
-  left: 3.5%;
-  width: 26.5%;
+.referBanner .rewardButton {
+  top: 55%;
+  left: 5%;
+  width: 22%;
   height: 14%;
 }
 
+.swapBanner .rewardButton {
+  top: 66%;
+  left: 5%;
+  width: 27%;
+  height: 18%;
+}
+
 .bonusBanner .rewardButton {
-  top: 70%;
-  left: 7%;
-  width: 36%;
-  height: 11%;
+  top: 69%;
+  left: 5%;
+  width: 29%;
+  height: 16%;
 }
 
 .captchaBanner .rewardButton {
   top: 55%;
-  left: 69%;
-  width: 18%;
-  height: 13%;
+  left: 5%;
+  width: 29%;
+  height: 15%;
 }
 
 .exchangeBanner .rewardButton {
-  top: 62%;
-  left: 71%;
-  width: 19%;
-  height: 10%;
+  top: 46%;
+  left: 4%;
+  width: 27%;
+  height: 15%;
 }
 
 .bannerFeature {

@@ -52,7 +52,7 @@ Focuses on redeeming earned VEs through supported options. The interface disting
 - ESLint
 
 ## Responsive Design
-Reward banners show each complete artwork without cropping and with a slight brightness lift. The artwork's own copy is not duplicated; semantic headings remain available to assistive technology, and working code buttons are positioned over the artwork's CTA areas. Spacing and sizing adapt across desktop, tablet, and mobile layouts.
+Reward banners use the dark-blue reference artwork at its native aspect ratio, preserving the artwork's own copy and CTA appearance. Semantic headings remain available to assistive technology, with working code buttons positioned over the artwork's CTA areas. Spacing and sizing adapt across desktop, tablet, and mobile layouts.
 
 - Main page background: #161827
 
