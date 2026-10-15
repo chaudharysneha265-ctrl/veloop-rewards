@@ -24,11 +24,11 @@ const banners = [
     headlineFirst: "Refer Friends,",
     headlineAccent: "Earn Rewards",
     category: "REFER & EARN",
-    text: "Invite your friends to VELOOP Rewards and earn exciting rewards together.",
+    text: "Share your referral link and earn rewards when friends join VELoop Rewards.",
     button: "Invite Now",
     accent: "#25bde1",
     headlineColor: "linear-gradient(100deg, #20cae9, #843dff)",
-    image: "/banner-refer-reference.jpg",
+    image: "/image.png",
     theme: "referBanner",
     icon: <FaGift />,
     features: [
@@ -48,7 +48,7 @@ const banners = [
     button: "Open Swap Center",
     accent: "#d7ad68",
     headlineColor: "linear-gradient(100deg, #e6c98c, #ffffff)",
-    image: "/banner-swap-reference.jpg",
+    image: "/Futuristic Neon Swap Rewards Banner.png",
     theme: "swapBanner",
     icon: <FaExchangeAlt />,
   },
@@ -58,11 +58,11 @@ const banners = [
     headlineFirst: "Boost Your",
     headlineAccent: "VE Balance",
     category: "BONUS OPPORTUNITIES",
-    text: "Complete eligible activities and unlock additional VEs through special bonus opportunities.",
+    text: "Complete eligible activities to earn bonus VEs and grow your reward balance.",
     button: "Explore Bonuses",
     accent: "#c99d59",
     headlineColor: "linear-gradient(100deg, #f0d6a1, #c99d59)",
-    image: "/banner-bonus-reference.jpg",
+    image: "/Bonus VEs_ Grow Faster, Earn More.png",
     theme: "bonusBanner",
     icon: <FaCoins />,
   },
@@ -72,11 +72,11 @@ const banners = [
     headlineFirst: "Solve Captchas.",
     headlineAccent: "Earn Gems.",
     category: "CAPTCHA REWARDS",
-    text: "Complete simple captcha tasks accurately and earn eligible Gem rewards.",
+    text: "Complete available CAPTCHA tasks accurately to earn eligible Gems.",
     button: "Start Task",
     accent: "#a783ed",
     headlineColor: "linear-gradient(100deg, #d9c5ff, #9763e7)",
-    image: "/banner-captcha-reference.jpg",
+    image: "/Captcha Tasks_ Verify, Complete, Earn.png",
     theme: "captchaBanner",
     icon: <FaShieldAlt />,
   },
@@ -86,11 +86,11 @@ const banners = [
     headlineFirst: "Convert Gems to",
     headlineAccent: "VEs",
     category: "REWARD EXCHANGE",
-    text: "Exchange eligible Gems into VEs and grow your VE balance.",
+    text: "Redeem eligible Gems for VEs and add more value to your reward balance.",
     button: "Open Exchange Center",
     accent: "#d9b56b",
     headlineColor: "linear-gradient(100deg, #ffffff, #9763e7 52%, #e7c87f)",
-    image: "/banner-exchange-reference.jpg",
+    image: "/Neon Rewards Exchange Centre.png",
     theme: "exchangeBanner",
     icon: <FaWallet />,
   },
@@ -110,11 +110,11 @@ function RewardBanner({ banner }) {
   const handleAction = async () => {
     if (banner.id === "refer") {
       const referralText =
-        "Join me on VELOOP Rewards and explore eligible earning opportunities!";
+        "Join me on VELoop Rewards and explore ways to earn rewards!";
       try {
         if (navigator.share) {
           await navigator.share({
-            title: "VELOOP Rewards",
+            title: "VELoop Rewards",
             text: referralText,
           });
           showMessage("Referral shared successfully!");
@@ -172,6 +172,28 @@ function RewardBanner({ banner }) {
         "--headline-accent": banner.headlineColor,
       }}
     >
+      <div className={styles.bannerVisualArea}>
+        <div
+          className={styles.visualGlow}
+          style={{ "--accent": banner.accent }}
+          aria-hidden="true"
+        />
+
+        <div className={styles.visualCard}>
+          <div className={styles.visualMain}>
+            <img
+              className={styles.bannerArtwork}
+              src={banner.image}
+              alt={`${banner.title} illustration`}
+            />
+          </div>
+        </div>
+        <div className={styles.bannerBrand}>
+          <FaBolt aria-hidden="true" />
+          <span>VELoop Rewards</span>
+        </div>
+      </div>
+
       <div className={styles.bannerContent}>
         <div className={styles.bannerInfo}>
           <div className={styles.bannerEyebrow}>
@@ -280,7 +302,7 @@ function RewardBanner({ banner }) {
 
                   {banner.id === "refer" && (
                     <p>
-                      Invite friends to explore VELOOP Rewards and eligible
+                      Invite friends to explore VELoop Rewards and eligible
                       earning opportunities.
                     </p>
                   )}
@@ -315,24 +337,6 @@ function RewardBanner({ banner }) {
           )}
         </div>
 
-        <div className={styles.bannerVisualArea}>
-          <div
-            className={styles.visualGlow}
-            style={{ "--accent": banner.accent }}
-            aria-hidden="true"
-          />
-
-          <div className={styles.visualCard}>
-            <div className={styles.visualMain}>
-              <img
-                className={styles.bannerArtwork}
-                src={banner.image}
-                alt={`${banner.title} illustration`}
-              />
-            </div>
-
-          </div>
-        </div>
       </div>
       {banner.features && (
         <div className={styles.bannerFeatureStrip}>

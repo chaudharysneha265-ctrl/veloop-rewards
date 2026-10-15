@@ -1,7 +1,7 @@
-# VELOOP Rewards
+# VELoop Rewards
 
 ## Project Overview
-VELOOP Rewards is a responsive React + Vite reward interface designed around five core reward experiences: Refer & Earn, Swap Center, Bonus VEs, Captcha Tasks, and Exchange Center. The interface uses a premium fintech-inspired visual language with a deep navy background, soft blue and gold accents, large feature visuals, interactive CTAs, and responsive layouts.
+VELoop Rewards is a responsive React + Vite reward interface designed around five core reward experiences: Refer & Earn, Swap Center, Bonus VEs, CAPTCHA Tasks, and Exchange Center. The interface uses a premium fintech-inspired visual language with a deep navy background, soft blue and gold accents, large feature visuals, interactive CTAs, and responsive layouts.
 
 ## Live Demo
 https://veloop-rewards-vert.vercel.app/
@@ -52,12 +52,8 @@ Focuses on redeeming earned VEs through supported options. The interface disting
 - ESLint
 
 ## Responsive Design
-The banners use 100% of their parent width and are designed around the assignment viewport ranges.
+Reward banners place their artwork above the details and actions at all viewport sizes. Spacing and typography adapt across the design targets: 1366x768, 1440x900, 1920x1080, 768x1024, 820x1180, 375x812, 390x844, and 430x932.
 
-- Desktop/laptop: 410–450px target banner height
-- Tablet: 380–540px target banner height
-- Mobile: 330–520px target banner height
-- Tested design targets: 1366x768, 1440x900, 1920x1080, 768x1024, 820x1180, 375x812, 390x844, and 430x932
 - Main page background: #161827
 
 ## Animation Details
@@ -142,7 +138,7 @@ docs/
 ```
 
 ## Notes
-- Reward values and interactions are demo/sample UI behavior and should not be treated as official VELOOP reward claims.
+- Reward values and interactions are demo/sample UI behavior and should not be treated as official VELoop reward claims.
 - The project keeps the existing React/Vite structure and improves the working reward sections rather than rebuilding the project from scratch.
 
 ## Author
