@@ -240,6 +240,10 @@
   aspect-ratio: 3 / 2;
 }
 
+.swapBanner .bannerVisualArea {
+  aspect-ratio: 2 / 1;
+}
+
 .exchangeBanner .bannerVisualArea {
   aspect-ratio: 3 / 1;
 }
@@ -308,6 +312,7 @@
   box-shadow: none;
   color: transparent;
   font-size: 0;
+  opacity: 0.01;
 }
 
 .referBanner .rewardButton svg,
@@ -319,7 +324,7 @@
 }
 
 .referBanner .rewardButton {
-  top: 55%;
+  top: 46%;
   left: 5%;
   width: 22%;
   height: 14%;
