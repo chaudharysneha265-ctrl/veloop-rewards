@@ -188,10 +188,6 @@ function RewardBanner({ banner }) {
             />
           </div>
         </div>
-        <div className={styles.bannerBrand}>
-          <FaBolt aria-hidden="true" />
-          <span>VELoop Rewards</span>
-        </div>
       </div>
 
       <div className={styles.bannerContent}>
