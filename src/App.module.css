@@ -315,8 +315,19 @@
   padding: 0;
   border: 0;
   border-radius: 999px;
-  opacity: 0.01;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: brightness(1.35) saturate(1.3) contrast(1.05);
+  -webkit-backdrop-filter: brightness(1.35) saturate(1.3) contrast(1.05);
   box-shadow: none;
+  color: transparent;
+  font-size: 0;
+}
+
+.swapBanner .rewardButton svg,
+.captchaBanner .rewardButton svg,
+.exchangeBanner .rewardButton svg,
+.bonusBanner .rewardButton svg {
+  opacity: 0;
 }
 
 .swapBanner .rewardButton {
