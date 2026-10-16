@@ -312,7 +312,7 @@
   box-shadow: none;
   color: transparent;
   font-size: 0;
-  opacity: 0.01;
+  opacity: 1;
 }
 
 .referBanner .rewardButton svg,
