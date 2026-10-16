@@ -237,7 +237,7 @@
 }
 
 .referBanner .bannerVisualArea {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 1;
 }
 
 .swapBanner .bannerVisualArea {
@@ -592,16 +592,105 @@
   }
 
   .rewardBanner {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 22px;
     border-radius: 20px;
   }
 
-  .referBanner .rewardButton {
-    height: calc((100vw - 24px) * 0.07);
+  .bannerVisualArea,
+  .referBanner .bannerVisualArea,
+  .swapBanner .bannerVisualArea,
+  .exchangeBanner .bannerVisualArea {
+    flex: 0 0 auto;
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .visualCard,
+  .visualMain {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .bannerArtwork {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .bannerContent {
+    position: static;
+    inset: auto;
+    width: auto;
     min-height: 0;
-    gap: 3px;
-    font-size: clamp(8px, 2.5vw, 11px);
-    white-space: nowrap;
+    pointer-events: auto;
+  }
+
+  .bannerInfo {
+    position: static;
+    width: auto;
+    margin: 0;
+    padding: 22px 20px 24px;
+  }
+
+  .bannerEyebrow,
+  .bannerTitle,
+  .bannerText {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  .bannerEyebrow {
+    display: inline-flex;
+  }
+
+  .bannerTitle {
+    font-size: clamp(30px, 8vw, 42px);
+  }
+
+  .bannerText {
+    margin-bottom: 22px;
+    font-size: 16px;
+  }
+
+  .rewardBanner .rewardButton {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 50px;
+    padding: 13px 18px;
+    border: 1px solid color-mix(in srgb, var(--accent) 72%, #ffffff);
+    border-radius: 13px;
+    background: linear-gradient(110deg, var(--accent), color-mix(in srgb, var(--accent) 72%, #ffffff));
+    box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 20%, transparent);
+    color: #101522;
+    font-size: 14px;
+    opacity: 1;
+    white-space: normal;
+  }
+
+  .rewardBanner .rewardButton svg {
+    opacity: 1;
+  }
+
+  .ctaMessage {
+    position: relative;
+    inset: auto;
+    max-width: none;
+    margin: 16px 0 0;
   }
 
   .exchangeOptions {

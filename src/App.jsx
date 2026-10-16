@@ -28,7 +28,7 @@ const banners = [
     button: "Invite Now",
     accent: "#25bde1",
     headlineColor: "linear-gradient(100deg, #20cae9, #843dff)",
-    image: "/banner-exchange-reference.jpg",
+    image: "/banner-refer-reference.jpg",
     theme: "referBanner",
     icon: <FaGift />,
     features: [
@@ -48,7 +48,7 @@ const banners = [
     button: "Open Swap Center",
     accent: "#d7ad68",
     headlineColor: "linear-gradient(100deg, #e6c98c, #ffffff)",
-    image: "/banner-refer-reference.jpg",
+    image: "/Futuristic%20Neon%20Swap%20Rewards%20Banner.png",
     theme: "swapBanner",
     icon: <FaExchangeAlt />,
   },
