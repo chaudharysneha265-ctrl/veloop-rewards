@@ -82,9 +82,9 @@ const banners = [
   },
   {
     id: "exchange",
-    title: "Convert Gems to VEs",
-    headlineFirst: "Convert Gems to",
-    headlineAccent: "VEs",
+    title: "Exchange Center",
+    headlineFirst: "Exchange",
+    headlineAccent: "Center",
     category: "REWARD EXCHANGE",
     text: "Redeem eligible Gems for VEs and add more value to your reward balance.",
     button: "Open Exchange Center",
