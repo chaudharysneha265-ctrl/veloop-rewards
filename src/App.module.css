@@ -38,6 +38,8 @@
   --accent: #8fa4ff;
   --headline-accent: linear-gradient(100deg, #cbd5ff, #899cff);
 
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100%;
   margin: 0 0 clamp(26px, 4vw, 44px);
@@ -93,30 +95,29 @@
 }
 
 .bannerContent {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  inset: 0;
   width: 100%;
   min-height: 0;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .bannerInfo {
   position: static;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: clamp(22px, 4vw, 40px);
 }
 
 .bannerEyebrow,
 .bannerTitle,
 .bannerText {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
 }
 
 .bannerEyebrow {
@@ -203,7 +204,6 @@
     transform 180ms ease,
     filter 180ms ease,
     box-shadow 180ms ease;
-  pointer-events: auto;
 }
 
 .rewardButton:hover {
@@ -296,68 +296,6 @@
   display: none;
 }
 
-.referBanner .rewardButton,
-.swapBanner .rewardButton,
-.captchaBanner .rewardButton,
-.exchangeBanner .rewardButton,
-.bonusBanner .rewardButton {
-  position: absolute;
-  z-index: 3;
-  min-width: 0;
-  min-height: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  box-shadow: none;
-  color: transparent;
-  font-size: 0;
-  opacity: 1;
-}
-
-.referBanner .rewardButton svg,
-.swapBanner .rewardButton svg,
-.captchaBanner .rewardButton svg,
-.exchangeBanner .rewardButton svg,
-.bonusBanner .rewardButton svg {
-  opacity: 0;
-}
-
-.referBanner .rewardButton {
-  top: 49%;
-  left: 6%;
-  width: 20%;
-  height: 12%;
-}
-
-.swapBanner .rewardButton {
-  top: 66%;
-  left: 5%;
-  width: 27%;
-  height: 18%;
-}
-
-.bonusBanner .rewardButton {
-  top: 69%;
-  left: 5%;
-  width: 29%;
-  height: 16%;
-}
-
-.captchaBanner .rewardButton {
-  top: 55%;
-  left: 5%;
-  width: 29%;
-  height: 15%;
-}
-
-.exchangeBanner .rewardButton {
-  top: 62%;
-  left: 71%;
-  width: 17%;
-  height: 12%;
-}
-
 .bannerFeature {
   display: flex;
   align-items: center;
@@ -407,13 +345,10 @@
 }
 
 .ctaMessage {
-  position: absolute;
+  position: relative;
   z-index: 4;
-  right: 5%;
-  bottom: 5%;
-  left: 5%;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0 clamp(22px, 4vw, 40px) 28px;
   padding: 18px;
   border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
   border-radius: 16px;
@@ -624,7 +559,6 @@
 
   .bannerContent {
     position: static;
-    inset: auto;
     width: auto;
     min-height: 0;
     pointer-events: auto;
