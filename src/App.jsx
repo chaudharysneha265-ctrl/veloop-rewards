@@ -166,6 +166,7 @@ function RewardBanner({ banner }) {
 
   return (
     <section
+      id={`banner-${banner.id}`}
       className={`${styles.rewardBanner} ${styles[banner.theme]}`}
       style={{
         "--accent": banner.accent,
