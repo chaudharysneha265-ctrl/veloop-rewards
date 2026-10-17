@@ -28,7 +28,7 @@ const banners = [
     button: "Invite Now",
     accent: "#25bde1",
     headlineColor: "linear-gradient(100deg, #20cae9, #843dff)",
-    image: "/banner-exchange-reference.jpg",
+    image: "/banner-refer-reference.jpg",
     theme: "referBanner",
     icon: <FaGift />,
     features: [
