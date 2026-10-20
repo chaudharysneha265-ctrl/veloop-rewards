@@ -34,6 +34,100 @@
     #0b1020;
 }
 
+.pageHeader {
+  display: grid;
+  gap: clamp(24px, 4vw, 42px);
+  margin: 0 0 clamp(28px, 4vw, 48px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  width: fit-content;
+  color: #f4f6ff;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.brand strong {
+  color: #9cacf9;
+  font-weight: 550;
+}
+
+.brandMark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid rgba(152, 172, 255, 0.36);
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(83, 112, 255, 0.25), rgba(135, 76, 255, 0.14));
+  box-shadow: 0 5px 18px rgba(49, 83, 235, 0.16);
+  color: #c5d0ff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.pageIntro {
+  max-width: 760px;
+}
+
+.pageEyebrow {
+  margin: 0 0 12px;
+  color: #8fa8ff;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+}
+
+.pageIntro h1 {
+  margin: 0;
+  color: #f7f8ff;
+  font-size: clamp(34px, 5.2vw, 62px);
+  font-weight: 720;
+  letter-spacing: -0.05em;
+  line-height: 1.04;
+}
+
+.pageIntro > p:last-child {
+  margin: 15px 0 0;
+  color: #aeb9d0;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.65;
+}
+
+.bannerNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.bannerNav a {
+  padding: 9px 13px;
+  border: 1px solid rgba(151, 170, 226, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #b7c1d8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.bannerNav a:hover,
+.bannerNav a:focus-visible {
+  border-color: rgba(151, 170, 226, 0.42);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
 .rewardBanner {
   --accent: #8fa4ff;
   --headline-accent: linear-gradient(100deg, #cbd5ff, #899cff);
@@ -42,7 +136,7 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  margin: 0 0 clamp(26px, 4vw, 44px);
+  margin: 0 0 clamp(24px, 3.5vw, 38px);
   overflow: hidden;
   border: 1px solid rgba(154, 171, 232, 0.18);
   border-radius: 26px;
@@ -103,10 +197,27 @@
 }
 
 .bannerInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   position: static;
   width: 100%;
   margin: 0;
-  padding: clamp(22px, 4vw, 40px);
+  padding: 16px clamp(20px, 3vw, 32px);
+  border-top: 1px solid rgba(154, 171, 232, 0.1);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .bannerEyebrow,
@@ -124,7 +235,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: 0 0 20px;
+  margin: 0;
   padding: 8px 13px;
   border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
   border-radius: 999px;
@@ -151,10 +262,10 @@
 }
 
 .bannerTitle {
-  max-width: 920px;
-  margin: 0 0 16px;
+  max-width: 900px;
+  margin: 0 0 14px;
   color: #f8f9ff;
-  font-size: clamp(38px, 5vw, 64px);
+  font-size: clamp(34px, 4.7vw, 58px);
   font-weight: 750;
   letter-spacing: -0.045em;
   line-height: 1.04;
@@ -232,20 +343,10 @@
   aspect-ratio: 2 / 1;
   overflow: hidden;
   isolation: isolate;
-  background: #0c1222;
+  background:
+    radial-gradient(ellipse at center, rgba(59, 91, 186, 0.12), transparent 70%),
+    #080d1c;
   pointer-events: none;
-}
-
-.referBanner .bannerVisualArea {
-  aspect-ratio: 2 / 1;
-}
-
-.swapBanner .bannerVisualArea {
-  aspect-ratio: 2 / 1;
-}
-
-.exchangeBanner .bannerVisualArea {
-  aspect-ratio: 2 / 1;
 }
 
 .visualGlow {
@@ -282,7 +383,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   filter: none;
   transition: filter 300ms ease;
@@ -533,28 +634,20 @@
     border-radius: 20px;
   }
 
-  .bannerVisualArea,
-  .referBanner .bannerVisualArea,
-  .swapBanner .bannerVisualArea,
-  .exchangeBanner .bannerVisualArea {
+  .pageHeader {
+    gap: 22px;
+    margin-bottom: 26px;
+  }
+
+  .bannerNav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: thin;
+  }
+
+  .bannerNav a {
     flex: 0 0 auto;
-    aspect-ratio: auto;
-    height: auto;
-  }
-
-  .visualCard,
-  .visualMain {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
-  }
-
-  .bannerArtwork {
-    position: static;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
   }
 
   .bannerContent {
@@ -565,10 +658,11 @@
   }
 
   .bannerInfo {
+    align-items: flex-start;
     position: static;
     width: auto;
     margin: 0;
-    padding: 22px 20px 24px;
+    padding: 14px 16px;
   }
 
   .bannerEyebrow,

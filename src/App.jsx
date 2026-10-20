@@ -25,10 +25,10 @@ const banners = [
     headlineAccent: "Earn Rewards",
     category: "REFER & EARN",
     text: "Share your referral link and earn rewards when friends join VELoop Rewards.",
-    button: "Invite Now",
+    button: "Share referral",
     accent: "#25bde1",
     headlineColor: "linear-gradient(100deg, #20cae9, #843dff)",
-    image: "/banner-refer-reference.jpg",
+    image: "/image.png",
     theme: "referBanner",
     icon: <FaGift />,
     features: [
@@ -45,7 +45,7 @@ const banners = [
     headlineAccent: "Center",
     category: "REWARD CONVERSION",
     text: "Convert eligible reward balances between supported currencies.",
-    button: "Open Swap Center",
+    button: "Try a swap",
     accent: "#d7ad68",
     headlineColor: "linear-gradient(100deg, #e6c98c, #ffffff)",
     image: "/Futuristic%20Neon%20Swap%20Rewards%20Banner.png",
@@ -59,7 +59,7 @@ const banners = [
     headlineAccent: "VE Balance",
     category: "BONUS OPPORTUNITIES",
     text: "Complete eligible activities to earn bonus VEs and grow your reward balance.",
-    button: "Explore Bonuses",
+    button: "Explore bonuses",
     accent: "#c99d59",
     headlineColor: "linear-gradient(100deg, #f0d6a1, #c99d59)",
     image: "/banner-bonus-reference.jpg",
@@ -73,10 +73,10 @@ const banners = [
     headlineAccent: "Earn Gems.",
     category: "CAPTCHA REWARDS",
     text: "Complete available CAPTCHA tasks accurately to earn eligible Gems.",
-    button: "Start Task",
+    button: "Try a task",
     accent: "#a783ed",
     headlineColor: "linear-gradient(100deg, #d9c5ff, #9763e7)",
-    image: "/banner-captcha-reference.jpg",
+    image: "/Captcha%20Tasks_%20Verify,%20Complete,%20Earn.png",
     theme: "captchaBanner",
     icon: <FaShieldAlt />,
   },
@@ -87,7 +87,7 @@ const banners = [
     headlineAccent: "Center",
     category: "REWARD EXCHANGE",
     text: "Redeem eligible VEs for supported rewards, gift cards, or UPI options.",
-    button: "Open Exchange Center",
+    button: "Choose a reward",
     accent: "#d9b56b",
     headlineColor: "linear-gradient(100deg, #ffffff, #9763e7 52%, #e7c87f)",
     image: "/Neon%20Rewards%20Exchange%20Centre.png",
@@ -204,12 +204,12 @@ function RewardBanner({ banner }) {
             <p className={styles.bannerLabel}>{banner.category}</p>
           </div>
 
-          <h2 className={styles.bannerTitle}>
+          <h2 className={styles.visuallyHidden}>
             <span>{banner.headlineFirst}</span>
             {" "}
             <span className={styles.bannerTitleAccent}>{banner.headlineAccent}</span>
           </h2>
-          <p className={styles.bannerText}>{banner.text}</p>
+          <p className={styles.visuallyHidden}>{banner.text}</p>
 
           <button
             type="button"
@@ -357,6 +357,24 @@ function RewardBanner({ banner }) {
 export default function App() {
   return (
     <main className={styles.rewardPage}>
+      <header className={styles.pageHeader}>
+        <a className={styles.brand} href="#top" aria-label="VELoop Rewards home">
+          <span className={styles.brandMark} aria-hidden="true">V</span>
+          <span>VELoop <strong>Rewards</strong></span>
+        </a>
+        <div className={styles.pageIntro} id="top">
+          <p className={styles.pageEyebrow}>YOUR REWARDS, YOUR WAY</p>
+          <h1>More ways to make every VE count.</h1>
+          <p>Explore the VELoop rewards experiences and find your next way to earn.</p>
+        </div>
+        <nav className={styles.bannerNav} aria-label="Reward experiences">
+          {banners.map((banner) => (
+            <a key={banner.id} href={`#banner-${banner.id}`}>
+              {banner.category}
+            </a>
+          ))}
+        </nav>
+      </header>
       {banners.map((banner) => (
         <RewardBanner key={banner.id} banner={banner} />
       ))}
